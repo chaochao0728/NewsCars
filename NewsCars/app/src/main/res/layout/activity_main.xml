@@ -21,27 +21,41 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            />
+            android:button="@null"
+            android:text="推荐"
+            android:gravity="center"/>
         <RadioButton
             android:id="@+id/mainBtn_forum"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:button="@null"
+            android:text="论坛"
+            android:gravity="center"/>
         <RadioButton
             android:id="@+id/mainBtn_findCar"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:button="@null"
+            android:text="找车"
+            android:gravity="center"/>
         <RadioButton
             android:id="@+id/mainBtn_find"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="发现"/>
         <RadioButton
             android:id="@+id/mainBtn_me"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="我"/>
 
 
 
