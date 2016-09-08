@@ -1,6 +1,7 @@
 package com.hanchao.newscars.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,9 +13,11 @@ import android.view.ViewGroup;
  * Created by dllo on 16/9/8.
  */
 public abstract class AbsBaseFragment extends Fragment{
+    protected Context context;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        this.context=context;
     }
 
     @Nullable
@@ -41,5 +44,8 @@ public abstract class AbsBaseFragment extends Fragment{
     //简化 findViewById
     protected <T extends View> T byView(int resId){
         return (T)getView().findViewById(resId);
+    }
+    protected void goTo(Class<? extends AbsBaseFragment> to){
+        context.startActivity(new Intent(context,to));
     }
 }
