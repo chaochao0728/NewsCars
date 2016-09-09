@@ -5,41 +5,47 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.activity.MainActivity">
-<FrameLayout
-    android:id="@+id/main_replaceView"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="9"/>
+
+    <FrameLayout
+        android:id="@+id/main_replaceView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9" />
+
     <RadioGroup
         android:id="@+id/main_radioGroup"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
+
         <RadioButton
             android:id="@+id/mainBtn_recommend"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
-            android:text="推荐"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="推荐" />
+
         <RadioButton
             android:id="@+id/mainBtn_forum"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
-            android:text="论坛"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="论坛" />
+
         <RadioButton
             android:id="@+id/mainBtn_findCar"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
-            android:text="找车"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="找车" />
+
         <RadioButton
             android:id="@+id/mainBtn_find"
             android:layout_width="0dp"
@@ -47,7 +53,8 @@
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
-            android:text="发现"/>
+            android:text="发现" />
+
         <RadioButton
             android:id="@+id/mainBtn_me"
             android:layout_width="0dp"
@@ -55,10 +62,7 @@
             android:layout_weight="1"
             android:button="@null"
             android:gravity="center"
-            android:text="我"/>
-
-
-
+            android:text="我" />
 
 
     </RadioGroup>

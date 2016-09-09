@@ -12,18 +12,20 @@ import android.view.ViewGroup;
 /**
  * Created by dllo on 16/9/8.
  */
-public abstract class AbsBaseFragment extends Fragment{
+public abstract class AbsBaseFragment extends Fragment {
     protected Context context;
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        this.context=context;
+        this.context = context;
     }
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(setLayout(),container,false);
+        return inflater.inflate(setLayout(), container, false);
     }
 
     @Override
@@ -43,11 +45,13 @@ public abstract class AbsBaseFragment extends Fragment{
     protected abstract void initView();
 
     protected abstract void initDatas();
+
     //简化 findViewById
-    protected <T extends View> T byView(int resId){
-        return (T)getView().findViewById(resId);
+    protected <T extends View> T byView(int resId) {
+        return (T) getView().findViewById(resId);
     }
-    protected void goTo(Class<? extends AbsBaseFragment> to){
-        context.startActivity(new Intent(context,to));
+
+    protected void goTo(Class<? extends AbsBaseFragment> to) {
+        context.startActivity(new Intent(context, to));
     }
 }
