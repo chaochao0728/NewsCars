@@ -25,7 +25,7 @@ public abstract class AbsBaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(setLayout(), container, false);
+        return inflater.inflate(setLayout(),container,false);
     }
 
     @Override
