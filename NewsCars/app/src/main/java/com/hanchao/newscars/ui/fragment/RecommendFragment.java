@@ -51,7 +51,7 @@ public class RecommendFragment extends AbsBaseFragment {
         data.add(new NewsFargent());
         adapter=new RecommendAdapter(getChildFragmentManager(),data);
         viewPager.setAdapter(adapter);
-        tabLayout.setTabTextColors(Color.GREEN,Color.RED);
+        tabLayout.setTabTextColors(Color.GRAY,Color.BLUE);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabLayout.setupWithViewPager(viewPager);
 

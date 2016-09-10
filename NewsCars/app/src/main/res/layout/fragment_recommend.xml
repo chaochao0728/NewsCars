@@ -16,13 +16,15 @@
             android:id="@+id/fragment_recommend_tabLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="8"/>
+            android:layout_weight="8"
+            app:tabIndicatorHeight="0dp"/>
         <ImageView
             android:id="@+id/fragment_recommend_imageFind"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/fangdajing"
+            />
 
 
     </LinearLayout>
