@@ -9,9 +9,10 @@ import java.util.List;
 /**
  * Created by dllo on 16/9/10.
  */
-public class FindCarAdapter extends FragmentPagerAdapter{
-    private List<Fragment>data;
-    private String title[]={"品牌","筛选","降价","找二手车"};
+public class FindCarAdapter extends FragmentPagerAdapter {
+    private List<Fragment> data;
+    private String title[] = {"品牌", "筛选", "降价", "找二手车"};
+
     public FindCarAdapter(FragmentManager fm, List<Fragment> data) {
         super(fm);
         this.data = data;

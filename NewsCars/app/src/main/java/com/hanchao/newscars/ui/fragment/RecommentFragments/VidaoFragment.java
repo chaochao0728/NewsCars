@@ -1,6 +1,7 @@
-package com.hanchao.newscars.ui.fragment;
+package com.hanchao.newscars.ui.fragment.RecommentFragments;
 
 import com.hanchao.newscars.R;
+import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
 
 public class VidaoFragment extends AbsBaseFragment {
 

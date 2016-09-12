@@ -1,14 +1,15 @@
-package com.hanchao.newscars.ui.fragment;
+package com.hanchao.newscars.ui.fragment.findcarsfragment;
 
 import com.hanchao.newscars.R;
+import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/10.
  */
-public class HotTopicFragment extends AbsBaseFragment{
+public class BrandFragment extends AbsBaseFragment {
     @Override
     protected int setLayout() {
-        return R.layout.fragment_hot_topic;
+        return R.layout.fragment_brand;
     }
 
     @Override

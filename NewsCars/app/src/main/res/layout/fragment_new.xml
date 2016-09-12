@@ -3,9 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <ImageView
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@mipmap/ic_launcher"/>
+        android:text="最新"
+        android:textSize="40sp"
+        android:gravity="center"/>
 
 </LinearLayout>

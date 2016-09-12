@@ -13,8 +13,8 @@ import com.hanchao.newscars.ui.fragment.ForumFragment;
 import com.hanchao.newscars.ui.fragment.MeFragmet;
 import com.hanchao.newscars.ui.fragment.RecommendFragment;
 
-public class MainActivity extends AbsBaseActivity implements RadioGroup.OnCheckedChangeListener{
-    private RadioButton recommentBtn,forumBtn,findCarBtn,findBtn,meBtn;
+public class MainActivity extends AbsBaseActivity implements RadioGroup.OnCheckedChangeListener {
+    private RadioButton recommentBtn, forumBtn, findCarBtn, findBtn, meBtn;
     private RadioGroup radioGroup;
     private FrameLayout replaceView;
 
@@ -25,12 +25,12 @@ public class MainActivity extends AbsBaseActivity implements RadioGroup.OnChecke
 
     @Override
     protected void initView() {
-        recommentBtn=byView(R.id.mainBtn_recommend);
-        forumBtn=byView(R.id.mainBtn_forum);
-        findCarBtn=byView(R.id.mainBtn_findCar);
-        findBtn=byView(R.id.mainBtn_find);
-        meBtn=byView(R.id.mainBtn_me);
-        radioGroup=byView(R.id.main_radioGroup);
+        recommentBtn = byView(R.id.mainBtn_recommend);
+        forumBtn = byView(R.id.mainBtn_forum);
+        findCarBtn = byView(R.id.mainBtn_findCar);
+        findBtn = byView(R.id.mainBtn_find);
+        meBtn = byView(R.id.mainBtn_me);
+        radioGroup = byView(R.id.main_radioGroup);
     }
 
     @Override
@@ -42,23 +42,23 @@ public class MainActivity extends AbsBaseActivity implements RadioGroup.OnChecke
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        FragmentManager manager=getSupportFragmentManager();
-        FragmentTransaction transaction=manager.beginTransaction();
-        switch (checkedId){
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        switch (checkedId) {
             case R.id.mainBtn_recommend:
-                transaction.replace(R.id.main_replaceView,new RecommendFragment());
+                transaction.replace(R.id.main_replaceView, new RecommendFragment());
                 break;
             case R.id.mainBtn_forum:
-                transaction.replace(R.id.main_replaceView,new ForumFragment());
+                transaction.replace(R.id.main_replaceView, new ForumFragment());
                 break;
             case R.id.mainBtn_findCar:
-                transaction.replace(R.id.main_replaceView,new FindCarFragment());
+                transaction.replace(R.id.main_replaceView, new FindCarFragment());
                 break;
             case R.id.mainBtn_find:
-                transaction.replace(R.id.main_replaceView,new FindFragment());
+                transaction.replace(R.id.main_replaceView, new FindFragment());
                 break;
             case R.id.mainBtn_me:
-                transaction.replace(R.id.main_replaceView,new MeFragmet());
+                transaction.replace(R.id.main_replaceView, new MeFragmet());
                 break;
         }
         transaction.commit();

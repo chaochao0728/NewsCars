@@ -7,6 +7,9 @@ import android.support.v4.view.ViewPager;
 
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.ui.adapter.ForumAdapter;
+import com.hanchao.newscars.ui.fragment.forumfragments.CommonForumFragment;
+import com.hanchao.newscars.ui.fragment.forumfragments.HotTopicFragment;
+import com.hanchao.newscars.ui.fragment.forumfragments.PickRecommendFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +20,9 @@ import java.util.List;
 public class ForumFragment extends AbsBaseFragment {
     private ViewPager viewPager;
     private TabLayout tabLayout;
-    private List<Fragment>data;
+    private List<Fragment> data;
     private ForumAdapter adapter;
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_forum;
@@ -26,20 +30,20 @@ public class ForumFragment extends AbsBaseFragment {
 
     @Override
     protected void initView() {
-        viewPager=byView(R.id.fragment_forum_viewPager);
-        tabLayout=byView(R.id.fragment_forum_tabLayout);
+        viewPager = byView(R.id.fragment_forum_viewPager);
+        tabLayout = byView(R.id.fragment_forum_tabLayout);
     }
 
     @Override
     protected void initDatas() {
-        data=new ArrayList<>();
+        data = new ArrayList<>();
         data.add(new PickRecommendFragment());
         data.add(new HotTopicFragment());
         data.add(new CommonForumFragment());
-        adapter=new ForumAdapter(getChildFragmentManager(),data);
+        adapter = new ForumAdapter(getChildFragmentManager(), data);
         viewPager.setAdapter(adapter);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        tabLayout.setTabTextColors(Color.GRAY,Color.BLUE);
+        tabLayout.setTabTextColors(Color.GRAY, Color.BLUE);
         tabLayout.setupWithViewPager(viewPager);
 
     }

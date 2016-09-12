@@ -24,45 +24,45 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/selecter_recommend"
             android:button="@null"
-            android:gravity="center"
-            android:text="推荐" />
+            android:gravity="center" />
 
         <RadioButton
             android:id="@+id/mainBtn_forum"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/selecter_forum"
             android:button="@null"
-            android:gravity="center"
-            android:text="论坛" />
+            android:gravity="center" />
 
         <RadioButton
             android:id="@+id/mainBtn_findCar"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/selecter_findcar"
             android:button="@null"
-            android:gravity="center"
-            android:text="找车" />
+            android:gravity="center" />
 
         <RadioButton
             android:id="@+id/mainBtn_find"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/selecter_find"
             android:button="@null"
-            android:gravity="center"
-            android:text="发现" />
+            android:gravity="center" />
 
         <RadioButton
             android:id="@+id/mainBtn_me"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/selecter_me"
             android:button="@null"
-            android:gravity="center"
-            android:text="我" />
+            android:gravity="center" />
 
 
     </RadioGroup>

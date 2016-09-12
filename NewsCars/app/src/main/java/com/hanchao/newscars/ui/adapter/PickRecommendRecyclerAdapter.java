@@ -15,8 +15,8 @@ import java.util.List;
 /**
  * Created by dllo on 16/9/10.
  */
-public class PickRecommendRecyclerAdapter extends RecyclerView.Adapter<PickRecommendRecyclerAdapter.PickRecommentViewHolder>{
-    private List<String>datas;
+public class PickRecommendRecyclerAdapter extends RecyclerView.Adapter<PickRecommendRecyclerAdapter.PickRecommentViewHolder> {
+    private List<String> datas;
     private Context context;
     private OnRecycleItemClik onRecycleItemClik;
 
@@ -32,8 +32,8 @@ public class PickRecommendRecyclerAdapter extends RecyclerView.Adapter<PickRecom
 
     @Override
     public PickRecommentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context).inflate(R.layout.item_pickrecommend_recycler,parent,false);
-        PickRecommentViewHolder holder=new PickRecommentViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_pickrecommend_recycler, parent, false);
+        PickRecommentViewHolder holder = new PickRecommentViewHolder(view);
         return holder;
     }
 
@@ -43,10 +43,10 @@ public class PickRecommendRecyclerAdapter extends RecyclerView.Adapter<PickRecom
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onRecycleItemClik!=null){
-                    int p=holder.getLayoutPosition();
-                    String string=datas.get(position);
-                    onRecycleItemClik.OnRvItemClicListener(p,string);
+                if (onRecycleItemClik != null) {
+                    int p = holder.getLayoutPosition();
+                    String string = datas.get(position);
+                    onRecycleItemClik.OnRvItemClicListener(p, string);
                 }
             }
         });
@@ -54,14 +54,15 @@ public class PickRecommendRecyclerAdapter extends RecyclerView.Adapter<PickRecom
 
     @Override
     public int getItemCount() {
-        return datas!=null?datas.size():0;
+        return datas != null ? datas.size() : 0;
     }
 
-    class PickRecommentViewHolder extends RecyclerView.ViewHolder{
+    class PickRecommentViewHolder extends RecyclerView.ViewHolder {
         TextView tv;
+
         public PickRecommentViewHolder(View itemView) {
             super(itemView);
-            tv= (TextView) itemView.findViewById(R.id.item_pickRecommend_recycler_Tv);
+            tv = (TextView) itemView.findViewById(R.id.item_pickRecommend_recycler_Tv);
         }
     }
 }

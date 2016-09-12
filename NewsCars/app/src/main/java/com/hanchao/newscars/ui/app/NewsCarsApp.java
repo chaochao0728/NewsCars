@@ -6,12 +6,13 @@ import android.content.Context;
 /**
  * Created by dllo on 16/9/8.
  */
-public class NewsCarsApp extends Application{
+public class NewsCarsApp extends Application {
     private static Context context;
+
     @Override
     public void onCreate() {
         super.onCreate();
-        context=getApplicationContext();
+        context = getApplicationContext();
     }
 
     public static Context getContext() {
