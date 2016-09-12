@@ -5,9 +5,9 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/fragment_pricedown_tv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="降价"
         android:textSize="40sp" />
 
 </LinearLayout>

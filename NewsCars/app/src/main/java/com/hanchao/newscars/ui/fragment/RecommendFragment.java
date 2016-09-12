@@ -1,6 +1,7 @@
 package com.hanchao.newscars.ui.fragment;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -24,14 +25,23 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/8.
+ * 推荐的fragment
  */
 public class RecommendFragment extends AbsBaseFragment implements VolleyResult {
+    private String recommendData;
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private List<Fragment> data;
     private RecommendAdapter adapter;
-    private String recommendUrl = "http://app.api.autohome.co" +
-            "m.cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l0.json";
+    //    private String recommendUrl = "http://app.api.autohome.co" +
+//            "m.cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l0.json";
+    private String dataUrl = "http://app.api.autohome.com.cn/autov" +
+            "4.8.8/news/newslist-pm1-c0-nt60-p1-s30-l0.json";
+
+    public static RecommendFragment newInstance() {
+        RecommendFragment fragment = new RecommendFragment();
+        return fragment;
+    }
 
     @Override
     protected int setLayout() {
@@ -53,31 +63,33 @@ public class RecommendFragment extends AbsBaseFragment implements VolleyResult {
         tabLayout.setTabTextColors(Color.GRAY, Color.BLUE);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabLayout.setupWithViewPager(viewPager);
-        VolleyInstance.getInstance().startRequest(recommendUrl, this);
+//        VolleyInstance.getInstance().startRequest(recommendUrl, this);
+        VolleyInstance.getInstance().startRequest(dataUrl, this);
     }
 
     private void buildDatas() {
         data = new ArrayList<>();
-        data.add(new NewFragment());
-        data.add(new YouchuangFragment());
-        data.add(new FastReportFragment());
-        data.add(new VidaoFragment());
-        data.add(new NewsFargent());
-        data.add(new NewsFargent());
-        data.add(new ShopingFragment());
-        data.add(new PriceFragment());
-        data.add(new NewsFargent());
-        data.add(new NewsFargent());
-        data.add(new CultureFragment());
-        data.add(new CultureFragment());
-        data.add(new NewsFargent());
-        data.add(new VidaoFragment());
-        data.add(new NewsFargent());
+        data.add(NewFragment.newInstance("全部"));
+        data.add(YouchuangFragment.newInstance("优创+"));
+        data.add(FastReportFragment.newInstance("快报"));
+        data.add(VidaoFragment.newInstance("视频"));
+        data.add(NewsFargent.newInstance("新闻"));
+        data.add(NewsFargent.newInstance("评测"));
+        data.add(ShopingFragment.newInstance("导购"));
+        data.add(PriceFragment.newInstance("行情"));
+        data.add(NewsFargent.newInstance("用车"));
+        data.add(NewsFargent.newInstance("技术"));
+        data.add(CultureFragment.newInstance("文化"));
+        data.add(CultureFragment.newInstance("改装"));
+        data.add(NewsFargent.newInstance("游记"));
+        data.add(VidaoFragment.newInstance("原创视频"));
+        data.add(NewsFargent.newInstance("说客"));
     }
 
     @Override
     public void success(String result) {
-        Log.d("RecommendFragment", result);
+        recommendData = result;
+        Log.d("RecommendFragment", recommendData);
     }
 
     @Override

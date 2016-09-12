@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/9.
+ * 推荐上面的tabLayout的适配器
  */
 public class RecommendAdapter extends FragmentPagerAdapter {
     private List<Fragment> datas;

@@ -1,6 +1,7 @@
 package com.hanchao.newscars.ui.fragment;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -17,12 +18,18 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/8.
+ * 找车的fragment
  */
 public class FindCarFragment extends AbsBaseFragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private List<Fragment> datas;
     private FindCarAdapter adapter;
+
+    public static FindCarFragment newInstance() {
+        FindCarFragment fragment = new FindCarFragment();
+        return fragment;
+    }
 
     @Override
     protected int setLayout() {
@@ -38,10 +45,10 @@ public class FindCarFragment extends AbsBaseFragment {
     @Override
     protected void initDatas() {
         datas = new ArrayList<>();
-        datas.add(new BrandFragment());
-        datas.add(new PickUpFragment());
-        datas.add(new PriceDownFragment());
-        datas.add(new FindSecondCarFragment());
+        datas.add(BrandFragment.newInstance("品牌"));
+        datas.add(PickUpFragment.newInstance("筛选"));
+        datas.add(PriceDownFragment.newInstance("降价"));
+        datas.add(FindSecondCarFragment.newInstance("找二手车"));
         adapter = new FindCarAdapter(getChildFragmentManager(), datas);
         viewPager.setAdapter(adapter);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);

@@ -5,6 +5,7 @@ import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
 
 /**
  * Created by dllo on 16/9/10.
+ * 常用论坛的fragment
  */
 public class CommonForumFragment extends AbsBaseFragment {
     @Override

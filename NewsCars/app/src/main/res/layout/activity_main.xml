@@ -6,65 +6,71 @@
     android:orientation="vertical"
     tools:context=".ui.activity.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/main_replaceView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <RadioGroup
-        android:id="@+id/main_radioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        <FrameLayout
+            android:id="@+id/main_replaceView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9" />
 
-        <RadioButton
-            android:id="@+id/mainBtn_recommend"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+        <RadioGroup
+            android:id="@+id/main_radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@drawable/selecter_recommend"
-            android:button="@null"
-            android:gravity="center" />
+            android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/mainBtn_forum"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/selecter_forum"
-            android:button="@null"
-            android:gravity="center" />
+            <RadioButton
+                android:id="@+id/mainBtn_recommend"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selecter_recommend"
+                android:button="@null"
+                android:gravity="center" />
 
-        <RadioButton
-            android:id="@+id/mainBtn_findCar"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/selecter_findcar"
-            android:button="@null"
-            android:gravity="center" />
+            <RadioButton
+                android:id="@+id/mainBtn_forum"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selecter_forum"
+                android:button="@null"
+                android:gravity="center" />
 
-        <RadioButton
-            android:id="@+id/mainBtn_find"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/selecter_find"
-            android:button="@null"
-            android:gravity="center" />
+            <RadioButton
+                android:id="@+id/mainBtn_findCar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selecter_findcar"
+                android:button="@null"
+                android:gravity="center" />
 
-        <RadioButton
-            android:id="@+id/mainBtn_me"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/selecter_me"
-            android:button="@null"
-            android:gravity="center" />
+            <RadioButton
+                android:id="@+id/mainBtn_find"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selecter_find"
+                android:button="@null"
+                android:gravity="center" />
+
+            <RadioButton
+                android:id="@+id/mainBtn_me"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/selecter_me"
+                android:button="@null"
+                android:gravity="center" />
 
 
-    </RadioGroup>
+        </RadioGroup>
+    </LinearLayout>
 
 </LinearLayout>

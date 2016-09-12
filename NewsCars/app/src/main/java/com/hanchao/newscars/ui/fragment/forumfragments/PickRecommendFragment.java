@@ -3,10 +3,12 @@ package com.hanchao.newscars.ui.fragment.forumfragments;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.hanchao.newscars.R;
@@ -20,12 +22,17 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
+ * 精品推荐的fragment
  */
 public class PickRecommendFragment extends AbsBaseFragment implements View.OnClickListener {
     private RecyclerView rv;
     private PickRecommendRecyclerAdapter adapter;
     private List<String> data;
     private ImageView choutiImageView;
+    private DrawerLayout rootView;
+    private LinearLayout drawerView;
+    private RecyclerView rvDrawer;
+    private List[] datas = {};
 
     @Override
     protected int setLayout() {
@@ -36,29 +43,42 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
     protected void initView() {
         rv = byView(R.id.fragment_picRecommend_recycler);
         choutiImageView = byView(R.id.fragment_pick_recommend_image_chouTi);
+        rootView = byView(R.id.main_foot);
+        drawerView = byView(R.id.fragment_pick_recommend_drawer);
+        rvDrawer = byView(R.id.fragment_pick_recommend_drawer_recyclerView);
     }
 
     @Override
     protected void initDatas() {
         buildDatas();
         adapter = new PickRecommendRecyclerAdapter(data, context);
-        LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
+        /**
+         * 抽屉的recycle
+         */
+        LinearLayoutManager managers = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+        rvDrawer.setLayoutManager(managers);
+        rvDrawer.setAdapter(adapter);
         adapter.setOnRecycleItemClik(new OnRecycleItemClik() {
             @Override
             public void OnRvItemClicListener(int pos, String str) {
-                Toast.makeText(context, "pos:" + pos, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "pos:" + pos, Toast.LENGTH_SHORT).show();
                 FragmentManager managers = getChildFragmentManager();
                 FragmentTransaction transaction = managers.beginTransaction();
-                transaction.replace(R.id.fragment_picRecommend_replaceView, new ManyFragment());
+                String da = data.get(pos);
+                transaction.replace(R.id.fragment_picRecommend_replaceView, ManyFragment.newInstance(da));
                 transaction.commit();
             }
         });
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_picRecommend_replaceView, new ManyFragment());
+        fragmentTransaction.replace(R.id.fragment_picRecommend_replaceView, ManyFragment.newInstance("全部"));
         fragmentTransaction.commit();
+        /**
+         * 抽屉点击事件
+         */
         choutiImageView.setOnClickListener(this);
     }
 
@@ -111,7 +131,7 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fragment_pick_recommend_image_chouTi:
-
+                rootView.openDrawer(drawerView);
                 break;
         }
     }

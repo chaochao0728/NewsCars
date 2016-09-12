@@ -5,9 +5,9 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/fragment_find_secondcar_tv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="找二手车"
         android:textSize="40sp" />
 
 </LinearLayout>

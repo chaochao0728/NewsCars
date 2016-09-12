@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
+ * 论坛的适配器
  */
 public class ForumAdapter extends FragmentPagerAdapter {
     private String title[] = {"精选推荐", "热帖", "常用论坛"};

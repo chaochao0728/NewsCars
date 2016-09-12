@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
+ * 精品推荐里的两个recycleView的适配器
  */
 public class PickRecommendRecyclerAdapter extends RecyclerView.Adapter<PickRecommendRecyclerAdapter.PickRecommentViewHolder> {
     private List<String> datas;

@@ -1,6 +1,7 @@
 package com.hanchao.newscars.ui.fragment;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -16,12 +17,18 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/8.
+ * 论坛的fragment
  */
 public class ForumFragment extends AbsBaseFragment {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private List<Fragment> data;
     private ForumAdapter adapter;
+
+    public static ForumFragment newInstance() {
+        ForumFragment fragment = new ForumFragment();
+        return fragment;
+    }
 
     @Override
     protected int setLayout() {

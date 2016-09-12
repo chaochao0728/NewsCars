@@ -10,9 +10,11 @@
     tools:context="com.hanchao.newscars.ui.fragment.VidaoFragment">
 
     <TextView
+        android:id="@+id/fragment_vidao_tv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="视频"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:gravity="center"/>
 
 </RelativeLayout>

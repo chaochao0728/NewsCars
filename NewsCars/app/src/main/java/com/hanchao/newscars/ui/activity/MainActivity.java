@@ -13,6 +13,9 @@ import com.hanchao.newscars.ui.fragment.ForumFragment;
 import com.hanchao.newscars.ui.fragment.MeFragmet;
 import com.hanchao.newscars.ui.fragment.RecommendFragment;
 
+/**
+ * 主页面
+ */
 public class MainActivity extends AbsBaseActivity implements RadioGroup.OnCheckedChangeListener {
     private RadioButton recommentBtn, forumBtn, findCarBtn, findBtn, meBtn;
     private RadioGroup radioGroup;
@@ -46,19 +49,19 @@ public class MainActivity extends AbsBaseActivity implements RadioGroup.OnChecke
         FragmentTransaction transaction = manager.beginTransaction();
         switch (checkedId) {
             case R.id.mainBtn_recommend:
-                transaction.replace(R.id.main_replaceView, new RecommendFragment());
+                transaction.replace(R.id.main_replaceView, RecommendFragment.newInstance());
                 break;
             case R.id.mainBtn_forum:
-                transaction.replace(R.id.main_replaceView, new ForumFragment());
+                transaction.replace(R.id.main_replaceView, ForumFragment.newInstance());
                 break;
             case R.id.mainBtn_findCar:
-                transaction.replace(R.id.main_replaceView, new FindCarFragment());
+                transaction.replace(R.id.main_replaceView, FindCarFragment.newInstance());
                 break;
             case R.id.mainBtn_find:
-                transaction.replace(R.id.main_replaceView, new FindFragment());
+                transaction.replace(R.id.main_replaceView, FindFragment.newInstance());
                 break;
             case R.id.mainBtn_me:
-                transaction.replace(R.id.main_replaceView, new MeFragmet());
+                transaction.replace(R.id.main_replaceView, MeFragmet.newInstance());
                 break;
         }
         transaction.commit();
