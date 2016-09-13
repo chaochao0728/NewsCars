@@ -1,16 +1,12 @@
 package com.hanchao.newscars.ui.fragment;
 
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.ui.adapter.RecommendAdapter;
-import com.hanchao.newscars.mode.net.VolleyInstance;
-import com.hanchao.newscars.mode.net.VolleyResult;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.CultureFragment;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.FastReportFragment;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.NewFragment;
@@ -27,16 +23,13 @@ import java.util.List;
  * Created by dllo on 16/9/8.
  * 推荐的fragment
  */
-public class RecommendFragment extends AbsBaseFragment implements VolleyResult {
-    private String recommendData;
+public class RecommendFragment extends AbsBaseFragment {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private List<Fragment> data;
     private RecommendAdapter adapter;
-    //    private String recommendUrl = "http://app.api.autohome.co" +
-//            "m.cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l0.json";
-    private String dataUrl = "http://app.api.autohome.com.cn/autov" +
-            "4.8.8/news/newslist-pm1-c0-nt60-p1-s30-l0.json";
+    private String recommendUrl = "http://app.api.autohome.com." +
+            "cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l0.json";
 
     public static RecommendFragment newInstance() {
         RecommendFragment fragment = new RecommendFragment();
@@ -63,13 +56,11 @@ public class RecommendFragment extends AbsBaseFragment implements VolleyResult {
         tabLayout.setTabTextColors(Color.GRAY, Color.BLUE);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabLayout.setupWithViewPager(viewPager);
-//        VolleyInstance.getInstance().startRequest(recommendUrl, this);
-        VolleyInstance.getInstance().startRequest(dataUrl, this);
     }
 
     private void buildDatas() {
         data = new ArrayList<>();
-        data.add(NewFragment.newInstance("全部"));
+        data.add(NewFragment.newInstance(recommendUrl));
         data.add(YouchuangFragment.newInstance("优创+"));
         data.add(FastReportFragment.newInstance("快报"));
         data.add(VidaoFragment.newInstance("视频"));
@@ -86,14 +77,5 @@ public class RecommendFragment extends AbsBaseFragment implements VolleyResult {
         data.add(NewsFargent.newInstance("说客"));
     }
 
-    @Override
-    public void success(String result) {
-        recommendData = result;
-        Log.d("RecommendFragment", recommendData);
-    }
 
-    @Override
-    public void failure() {
-
-    }
 }

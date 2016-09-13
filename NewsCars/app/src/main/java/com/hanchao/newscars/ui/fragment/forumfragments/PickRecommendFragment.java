@@ -1,21 +1,20 @@
 package com.hanchao.newscars.ui.fragment.forumfragments;
 
-
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.ui.adapter.PickRecommendRecyclerAdapter;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
 import com.hanchao.newscars.ui.fragment.ManyFragment;
 import com.hanchao.newscars.utils.OnRecycleItemClik;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +31,6 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
     private DrawerLayout rootView;
     private LinearLayout drawerView;
     private RecyclerView rvDrawer;
-    private List[] datas = {};
 
     @Override
     protected int setLayout() {
@@ -131,7 +129,16 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fragment_pick_recommend_image_chouTi:
+//                int height= ScreenSize.getHight(context);
+//                rootView.setMinimumHeight(height);
                 rootView.openDrawer(drawerView);
+                rootView.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        rootView.closeDrawer(drawerView);
+                        return true;
+                    }
+                });
                 break;
         }
     }
