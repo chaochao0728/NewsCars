@@ -27,6 +27,7 @@ import java.util.List;
 public class NewsFargent extends AbsBaseFragment {
     private ListView listView;
     private NewsAdapter adapter;
+
     public static NewsFargent newInstance(String str) {
 
         Bundle args = new Bundle();
@@ -43,12 +44,12 @@ public class NewsFargent extends AbsBaseFragment {
 
     @Override
     protected void initView() {
-        listView=byView(R.id.fragment_news_listView);
+        listView = byView(R.id.fragment_news_listView);
     }
 
     @Override
     protected void initDatas() {
-        adapter=new NewsAdapter(context);
+        adapter = new NewsAdapter(context);
         listView.setAdapter(adapter);
         Bundle bundle = getArguments();
         String TheUrl = bundle.getString("URL");

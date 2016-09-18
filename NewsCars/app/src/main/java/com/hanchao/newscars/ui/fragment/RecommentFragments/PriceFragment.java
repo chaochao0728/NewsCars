@@ -26,6 +26,7 @@ import java.util.List;
 public class PriceFragment extends AbsBaseFragment {
     private ListView listView;
     private PriceAdapter adapter;
+
     public static PriceFragment newInstance(String str) {
 
         Bundle args = new Bundle();
@@ -42,12 +43,12 @@ public class PriceFragment extends AbsBaseFragment {
 
     @Override
     protected void initView() {
-        listView=byView(R.id.fragment_price_listView);
+        listView = byView(R.id.fragment_price_listView);
     }
 
     @Override
     protected void initDatas() {
-        adapter=new PriceAdapter(context);
+        adapter = new PriceAdapter(context);
         listView.setAdapter(adapter);
         Bundle bundle = getArguments();
         String TheUrl = bundle.getString("URL");
