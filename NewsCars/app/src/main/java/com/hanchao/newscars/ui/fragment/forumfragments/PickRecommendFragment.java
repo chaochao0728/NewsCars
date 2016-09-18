@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.ui.adapter.PickRecommendRecyclerAdapter;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
@@ -62,11 +63,9 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
         adapter.setOnRecycleItemClik(new OnRecycleItemClik() {
             @Override
             public void OnRvItemClicListener(int pos, String str) {
-//                Toast.makeText(context, "pos:" + pos, Toast.LENGTH_SHORT).show();
                 FragmentManager managers = getChildFragmentManager();
                 FragmentTransaction transaction = managers.beginTransaction();
-                String da = data.get(pos);
-                transaction.replace(R.id.fragment_picRecommend_replaceView, ManyFragment.newInstance(da));
+                transaction.replace(R.id.fragment_picRecommend_replaceView, ManyFragment.newInstance(data.get(pos)));
                 transaction.commit();
             }
         });
@@ -132,13 +131,6 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
 //                int height= ScreenSize.getHight(context);
 //                rootView.setMinimumHeight(height);
                 rootView.openDrawer(drawerView);
-                rootView.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        rootView.closeDrawer(drawerView);
-                        return true;
-                    }
-                });
                 break;
         }
     }

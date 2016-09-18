@@ -6,13 +6,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.hanchao.newscars.R;
+import com.hanchao.newscars.mode.net.NetValues;
 import com.hanchao.newscars.ui.adapter.RecommendAdapter;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.CultureFragment;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.FastReportFragment;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.NewFragment;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.NewsFargent;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.PriceFragment;
-import com.hanchao.newscars.ui.fragment.RecommentFragments.ShopingFragment;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.VidaoFragment;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.YouchuangFragment;
 
@@ -28,8 +28,6 @@ public class RecommendFragment extends AbsBaseFragment {
     private TabLayout tabLayout;
     private List<Fragment> data;
     private RecommendAdapter adapter;
-    private String recommendUrl = "http://app.api.autohome.com." +
-            "cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l0.json";
 
     public static RecommendFragment newInstance() {
         RecommendFragment fragment = new RecommendFragment();
@@ -58,23 +56,26 @@ public class RecommendFragment extends AbsBaseFragment {
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    /**
+     * 自定义data集合
+     */
     private void buildDatas() {
         data = new ArrayList<>();
-        data.add(NewFragment.newInstance(recommendUrl));
-        data.add(YouchuangFragment.newInstance("优创+"));
-        data.add(FastReportFragment.newInstance("快报"));
-        data.add(VidaoFragment.newInstance("视频"));
-        data.add(NewsFargent.newInstance("新闻"));
-        data.add(NewsFargent.newInstance("评测"));
-        data.add(ShopingFragment.newInstance("导购"));
-        data.add(PriceFragment.newInstance("行情"));
-        data.add(NewsFargent.newInstance("用车"));
-        data.add(NewsFargent.newInstance("技术"));
-        data.add(CultureFragment.newInstance("文化"));
-        data.add(CultureFragment.newInstance("改装"));
-        data.add(NewsFargent.newInstance("游记"));
-        data.add(VidaoFragment.newInstance("原创视频"));
-        data.add(NewsFargent.newInstance("说客"));
+        data.add(NewFragment.newInstance(NetValues.RECOMMEND_URL));
+        data.add(YouchuangFragment.newInstance(NetValues.YOUCHUANG));
+        data.add(FastReportFragment.newInstance(NetValues.FAST_REPORT));
+        data.add(VidaoFragment.newInstance(NetValues.VIDEO));
+        data.add(NewsFargent.newInstance(NetValues.NEWS));
+        data.add(NewsFargent.newInstance(NetValues.EVALUATION));
+        data.add(NewsFargent.newInstance(NetValues.SHOPPING));
+        data.add(PriceFragment.newInstance(NetValues.HANG_QING));
+        data.add(NewsFargent.newInstance(NetValues.USE_CAR));
+        data.add(NewsFargent.newInstance(NetValues.SKILL));
+        data.add(CultureFragment.newInstance(NetValues.CULTURE));
+        data.add(CultureFragment.newInstance(NetValues.CHANGGE_DRESS));
+        data.add(NewsFargent.newInstance(NetValues.TRALE));
+        data.add(VidaoFragment.newInstance(NetValues.ORIGINAL_VIDEO));
+        data.add(NewsFargent.newInstance(NetValues.TALKPERSON));
     }
 
 

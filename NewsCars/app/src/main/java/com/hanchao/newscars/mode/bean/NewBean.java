@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/13.
+ * 最新的bean类
  */
 public class NewBean {
 

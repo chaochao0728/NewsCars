@@ -7,6 +7,7 @@ import com.hanchao.newscars.R;
 
 /**
  * Created by dllo on 16/9/13.
+ * 最新的详情页
  */
 public class NewFragmentToAty extends AbsBaseActivity {
     private TextView titleTv;

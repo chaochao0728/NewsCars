@@ -26,6 +26,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/9.
+ * 最新的fragment
  */
 public class NewFragment extends AbsBaseFragment {
     private ListView listView;

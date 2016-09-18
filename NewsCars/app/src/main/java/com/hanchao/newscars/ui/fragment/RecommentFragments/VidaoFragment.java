@@ -1,22 +1,26 @@
 package com.hanchao.newscars.ui.fragment.RecommentFragments;
 
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
 
+/**
+ * 视频的fragment
+ */
+
 public class VidaoFragment extends AbsBaseFragment {
+    private ListView listView;
     public static VidaoFragment newInstance(String str) {
 
         Bundle args = new Bundle();
-        args.putString("tv", str);
+        args.putString("URL", str);
         VidaoFragment fragment = new VidaoFragment();
         fragment.setArguments(args);
         return fragment;
     }
-
-    private TextView tv;
 
     @Override
     protected int setLayout() {
@@ -25,13 +29,13 @@ public class VidaoFragment extends AbsBaseFragment {
 
     @Override
     protected void initView() {
-        tv = byView(R.id.fragment_vidao_tv);
+        listView=byView(R.id.fragment_video_listView);
     }
 
     @Override
     protected void initDatas() {
         Bundle bundle = getArguments();
-        String string = bundle.getString("tv");
-        tv.setText(string);
+        String string = bundle.getString("URL");
+
     }
 }
