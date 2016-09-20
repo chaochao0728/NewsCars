@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.hanchao.newscars.R;
+import com.hanchao.newscars.mode.net.NetValues;
 import com.hanchao.newscars.ui.adapter.PickRecommendRecyclerAdapter;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
 import com.hanchao.newscars.ui.fragment.ManyFragment;
@@ -32,6 +33,16 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
     private DrawerLayout rootView;
     private LinearLayout drawerView;
     private RecyclerView rvDrawer;
+    private String list[] = {NetValues.FORUM_ANSLESE_0, NetValues.FORUM_ANSLESE_1, NetValues.FORUM_ANSLESE_2, NetValues.FORUM_ANSLESE_3
+            , NetValues.FORUM_ANSLESE_4, NetValues.FORUM_ANSLESE_5, NetValues.FORUM_ANSLESE_6, NetValues.FORUM_ANSLESE_7
+            , NetValues.FORUM_ANSLESE_8, NetValues.FORUM_ANSLESE_9, NetValues.FORUM_ANSLESE_10, NetValues.FORUM_ANSLESE_11
+            , NetValues.FORUM_ANSLESE_12, NetValues.FORUM_ANSLESE_13, NetValues.FORUM_ANSLESE_14, NetValues.FORUM_ANSLESE_15
+            , NetValues.FORUM_ANSLESE_16, NetValues.FORUM_ANSLESE_17, NetValues.FORUM_ANSLESE_18, NetValues.FORUM_ANSLESE_19
+            , NetValues.FORUM_ANSLESE_20, NetValues.FORUM_ANSLESE_21, NetValues.FORUM_ANSLESE_22, NetValues.FORUM_ANSLESE_23
+            , NetValues.FORUM_ANSLESE_24, NetValues.FORUM_ANSLESE_25, NetValues.FORUM_ANSLESE_26, NetValues.FORUM_ANSLESE_27
+            , NetValues.FORUM_ANSLESE_28, NetValues.FORUM_ANSLESE_29, NetValues.FORUM_ANSLESE_30, NetValues.FORUM_ANSLESE_31
+            , NetValues.FORUM_ANSLESE_32, NetValues.FORUM_ANSLESE_33, NetValues.FORUM_ANSLESE_34, NetValues.FORUM_ANSLESE_35
+            , NetValues.FORUM_ANSLESE_36, NetValues.FORUM_ANSLESE_37, NetValues.FORUM_ANSLESE_38, NetValues.FORUM_ANSLESE_39, NetValues.FORUM_ANSLESE_40};
 
     @Override
     protected int setLayout() {
@@ -65,13 +76,13 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
             public void OnRvItemClicListener(int pos, String str) {
                 FragmentManager managers = getChildFragmentManager();
                 FragmentTransaction transaction = managers.beginTransaction();
-                transaction.replace(R.id.fragment_picRecommend_replaceView, ManyFragment.newInstance(data.get(pos)));
+                transaction.replace(R.id.fragment_picRecommend_replaceView, ManyFragment.newInstance(list[pos]));
                 transaction.commit();
             }
         });
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_picRecommend_replaceView, ManyFragment.newInstance("全部"));
+        fragmentTransaction.replace(R.id.fragment_picRecommend_replaceView, ManyFragment.newInstance(NetValues.FORUM_ANSLESE_0));
         fragmentTransaction.commit();
         /**
          * 抽屉点击事件
@@ -86,6 +97,7 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
         data.add("美人" + "'记'");
         data.add("论坛红人馆");
         data.add("论坛讲师");
+        data.add("汽车之家十年");
         data.add("精挑细选");
         data.add("现身说法");
         data.add("高端阵地");

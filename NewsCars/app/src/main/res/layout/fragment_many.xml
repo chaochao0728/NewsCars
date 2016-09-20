@@ -2,14 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_margin="10dp">
 
-    <TextView
-        android:id="@+id/fragment_many_tv"
+    <ListView
+        android:id="@+id/fragment_many_listView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="论坛所有fragment界面"
-        android:textSize="30dp"
-        android:gravity="center"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
