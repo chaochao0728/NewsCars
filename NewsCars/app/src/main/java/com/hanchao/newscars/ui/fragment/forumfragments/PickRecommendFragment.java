@@ -27,6 +27,7 @@ import java.util.List;
  */
 public class PickRecommendFragment extends AbsBaseFragment implements View.OnClickListener {
     private RecyclerView rv;
+    private int rvpos;
     private PickRecommendRecyclerAdapter adapter;
     private List<String> data;
     private ImageView choutiImageView;
@@ -60,6 +61,7 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
 
     @Override
     protected void initDatas() {
+        //recycleView的行布局
         buildDatas();
         adapter = new PickRecommendRecyclerAdapter(data, context);
         LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
@@ -140,8 +142,6 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fragment_pick_recommend_image_chouTi:
-//                int height= ScreenSize.getHight(context);
-//                rootView.setMinimumHeight(height);
                 rootView.openDrawer(drawerView);
                 break;
         }

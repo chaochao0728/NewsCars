@@ -15,6 +15,8 @@ import com.hanchao.newscars.utils.ScreenSize;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by dllo on 16/9/18.
  */
@@ -73,14 +75,15 @@ public class YouchuangFfragmentAdapter extends BaseAdapter {
 
     public class YouchuangFragmentViewHolder {
         TextView authorTv, titleTv, timeTv, zanTv, talkTv;
-        ImageView circleIv, youchuangIv;
+        ImageView youchuangIv;
+        CircleImageView circleIv;
         public YouchuangFragmentViewHolder(View view) {
             authorTv = (TextView) view.findViewById(R.id.item_youchuang_authorTv);
             titleTv = (TextView) view.findViewById(R.id.item_youchuang_titleTv);
             timeTv = (TextView) view.findViewById(R.id.item_youchuang_timeTv);
             zanTv = (TextView) view.findViewById(R.id.item_youchuang_zanTv);
             talkTv = (TextView) view.findViewById(R.id.item_youchuang_talkTv);
-            circleIv = (ImageView) view.findViewById(R.id.item_youchuang_circleimage);
+            circleIv = (CircleImageView) view.findViewById(R.id.item_youchuang_circleimage);
             youchuangIv = (ImageView) view.findViewById(R.id.item_youchuang_image);
         }
     }

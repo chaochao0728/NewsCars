@@ -12,18 +12,22 @@
         android:layout_weight="2"
         android:orientation="horizontal">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/item_youchuang_circleimage"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher"
+            />
 
         <TextView
             android:id="@+id/item_youchuang_authorTv"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="8"
-            android:gravity="center_vertical" />
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:text="hahahahhahahh"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
@@ -37,14 +41,17 @@
         <ImageView
             android:id="@+id/item_youchuang_image"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2" />
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:src="@mipmap/ic_launcher"/>
 
         <TextView
             android:id="@+id/item_youchuang_titleTv"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3" />
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:text="hahahahahahahha"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
@@ -75,7 +82,7 @@
 
             <ImageView
                 android:layout_width="30sp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:src="@mipmap/talk" />
 
