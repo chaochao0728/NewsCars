@@ -20,9 +20,10 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/fragment_picRecommend_recycler"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="8" />
+                android:layout_weight="1"
+                />
 
             <ImageView
                 android:id="@+id/fragment_pick_recommend_image_chouTi"

@@ -8,26 +8,28 @@
     <ImageView
         android:id="@+id/item_newfragment_iv"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_margin="10dp"/>
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="2"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/item_newfragment_titleTv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp" />
+            android:layout_height="0dp"
+            android:textSize="20sp"
+            android:layout_weight="4"/>
 
         <TextView
             android:id="@+id/item_newfragment_timeTv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
     </LinearLayout>
 
 </LinearLayout>

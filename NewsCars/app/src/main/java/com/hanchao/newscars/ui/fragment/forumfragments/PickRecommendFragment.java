@@ -76,6 +76,8 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
         adapter.setOnRecycleItemClik(new OnRecycleItemClik() {
             @Override
             public void OnRvItemClicListener(int pos, String str) {
+                rv.smoothScrollToPosition(pos);
+                rvDrawer.smoothScrollToPosition(pos);
                 FragmentManager managers = getChildFragmentManager();
                 FragmentTransaction transaction = managers.beginTransaction();
                 transaction.replace(R.id.fragment_picRecommend_replaceView, ManyFragment.newInstance(list[pos]));
@@ -143,6 +145,7 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
         switch (v.getId()) {
             case R.id.fragment_pick_recommend_image_chouTi:
                 rootView.openDrawer(drawerView);
+
                 break;
         }
     }

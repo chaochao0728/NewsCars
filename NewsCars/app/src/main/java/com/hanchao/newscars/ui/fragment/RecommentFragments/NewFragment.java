@@ -196,8 +196,12 @@ public class NewFragment extends AbsBaseFragment {
         super.onPause();
         isRotate = false;
     }
+
+    /**
+     * 添加数据的自定义方法
+     */
     private void builDatas() {
-        data=new ArrayList<>();
+        data = new ArrayList<>();
         data.add(new NewFragmentRoateBean("http://www3.autoimg.cn/newsdfs/g16/M09/4C/16/640x320_0_autohomecar__wKgH11ff_siAT39EAAb11cjL4MY067.jpg"));
         data.add(new NewFragmentRoateBean("http://www3.autoimg.cn/newsdfs/g6/M13/4C/41/640x320_0_autohomecar__wKjB0VffV46AVS3xAAr_7RZVkJo343.jpg"));
         data.add(new NewFragmentRoateBean("http://www2.autoimg.cn/newsdfs/g18/M01/48/51/640x320_0_autohomecar__wKgH2VfdXsOAENBxAAHlhJ5YO-I087.jpg"));
