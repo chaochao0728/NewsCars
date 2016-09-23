@@ -5,9 +5,38 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/fragment_pick_up_tv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="40sp" />
+        android:layout_height="1dp"
+        android:background="#FF76777E" />
+
+    <TextView
+        android:id="@+id/fragment_pickUp_Tv"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="条件" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#FF76777E" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="热门车系"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#FF76777E"/>
+
+    <ListView
+        android:id="@+id/fragment_pickUp_listView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </ListView>
 
 </LinearLayout>

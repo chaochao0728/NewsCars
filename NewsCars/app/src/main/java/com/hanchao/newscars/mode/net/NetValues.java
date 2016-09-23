@@ -65,5 +65,8 @@ public class NetValues {
     public static final String FORUM_ANSLESE_40 = "http://app.api.autohome.com.cn/autov4.8.8/club/jingxuantopic-pm1-c212-p1-s30.json";//沧海遗珠
     //-------------------------热帖----------------------------------------
     public static final String HOTTOPIC = "http://club.app.autohome.com.cn/club_v6.1.0/club/shotfoumlist-pm1-p1-s50.json";
+    //------------------------筛选-----------------------------------------
+    public static final String PICKUP = "http://cars.app.autohome.com.cn/cars_v5.8.0/cars/gethotseries-a2-pm2-v6.1.0-p1-s20.json";
+    public static final String BRAND_LISTVIEW = "http://223.99.255.20/cars.app.autohome.com.cn/cars_v5.7.0/cars/brands-pm2-ts635966571635589297.json";
 
 }

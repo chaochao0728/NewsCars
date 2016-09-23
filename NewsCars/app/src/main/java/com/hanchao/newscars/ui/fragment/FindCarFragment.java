@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.hanchao.newscars.R;
+import com.hanchao.newscars.mode.net.NetValues;
 import com.hanchao.newscars.ui.adapter.FindCarAdapter;
 import com.hanchao.newscars.ui.fragment.findcarsfragment.BrandFragment;
 import com.hanchao.newscars.ui.fragment.findcarsfragment.FindSecondCarFragment;
@@ -45,8 +46,8 @@ public class FindCarFragment extends AbsBaseFragment {
     @Override
     protected void initDatas() {
         datas = new ArrayList<>();
-        datas.add(BrandFragment.newInstance("品牌"));
-        datas.add(PickUpFragment.newInstance("筛选"));
+        datas.add(BrandFragment.newInstance(NetValues.BRAND_LISTVIEW));
+        datas.add(PickUpFragment.newInstance(NetValues.PICKUP));
         datas.add(PriceDownFragment.newInstance("降价"));
         datas.add(FindSecondCarFragment.newInstance("找二手车"));
         adapter = new FindCarAdapter(getChildFragmentManager(), datas);
