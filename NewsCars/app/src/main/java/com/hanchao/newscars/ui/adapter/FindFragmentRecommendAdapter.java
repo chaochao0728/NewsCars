@@ -38,7 +38,7 @@ public class FindFragmentRecommendAdapter extends RecyclerView.Adapter<FindFragm
         View view = LayoutInflater.from(context).inflate(R.layout.item_fragment_find_head_item, parent, false);
         int width = ScreenSize.getScreenSize(ScreenSize.screenState.WIDTH);
         int height = ScreenSize.getScreenSize(ScreenSize.screenState.HEIGHT);
-        view.setMinimumHeight(height / 8);
+        view.setMinimumHeight(height / 6);
         view.setMinimumWidth(width / 2);
         findRecommendViewHolder holder = new findRecommendViewHolder(view);
         return holder;

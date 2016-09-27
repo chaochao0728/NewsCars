@@ -91,9 +91,9 @@ public class NewFragment extends AbsBaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 NewBean.ResultBean.NewslistBean bean = (NewBean.ResultBean.NewslistBean) parent.getItemAtPosition(position);
-                String title = bean.getTitle();
-                Intent intent = new Intent(getContext(), NewFragmentToAty.class);
-                intent.putExtra("title", title);
+                String Id = bean.getId() + "";
+                Intent intent = new Intent(context, NewFragmentToAty.class);
+                intent.putExtra("title", Id);
                 startActivity(intent);
             }
         });
