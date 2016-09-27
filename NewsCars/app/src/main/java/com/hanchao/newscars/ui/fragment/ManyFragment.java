@@ -1,6 +1,10 @@
 package com.hanchao.newscars.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +19,7 @@ import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.ManyBean;
 import com.hanchao.newscars.mode.net.VolleyInstance;
 import com.hanchao.newscars.mode.net.VolleyResult;
+import com.hanchao.newscars.ui.activity.ManyFragmentToAty;
 import com.hanchao.newscars.ui.adapter.ManyAdapter;
 import com.hanchao.newscars.ui.app.NewsCarsApp;
 
@@ -27,6 +32,7 @@ import java.util.List;
 public class ManyFragment extends AbsBaseFragment {
     private ListView listView;
     private ManyAdapter adapter;
+    private List<ManyBean.ResultBean.ListBean> data;
 
     public static ManyFragment newInstance(String str) {
 
@@ -58,13 +64,23 @@ public class ManyFragment extends AbsBaseFragment {
             public void success(String result) {
                 Gson gson = new Gson();
                 ManyBean bean = gson.fromJson(result, ManyBean.class);
-                List<ManyBean.ResultBean.ListBean> data = bean.getResult().getList();
+                data = bean.getResult().getList();
                 adapter.setDatas(data);
             }
 
             @Override
             public void failure() {
 
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String Id =data.get(position).getTopicid()+"";
+                Log.d("1111", Id);
+                Intent intent = new Intent(context,ManyFragmentToAty.class);
+                intent.putExtra("manyId",Id);
+                startActivity(intent);
             }
         });
     }

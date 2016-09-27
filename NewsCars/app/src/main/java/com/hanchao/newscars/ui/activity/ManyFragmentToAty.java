@@ -1,38 +1,35 @@
 package com.hanchao.newscars.ui.activity;
 
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 
 import com.hanchao.newscars.R;
 
-/**
- * Created by dllo on 16/9/13.
- * 最新的详情页
- */
-public class NewFragmentToAty extends AbsBaseActivity {
+public class ManyFragmentToAty extends AbsBaseActivity {
     private WebView webView;
 
     @Override
     protected int setLayout() {
-        return R.layout.aty_newfragment_to;
+        return R.layout.activity_many_fragment_to_aty;
     }
 
     @Override
     protected void initView() {
-        webView = byView(R.id.aty_newfragment_to_web_view);
+        webView = byView(R.id.activity_many_fragment_to_aty_web_view);
     }
 
     @Override
     protected void initDatas() {
         Intent intent = getIntent();
-        String Url = "http://cont.app.autohome.com.cn/autov4.2.5/content/News/newscontent-a2-pm1-v4.2.5-n" +
-                intent.getStringExtra("title") + "-lz0-sp0-nt0-sa1-p0-c1-fs0-cw320.html";
+        String Url = "http://forum.app.autohome.com.cn/autov5.0.0/forum/club/topiccontent-a2-pm2-v5.0.0-t" +
+                intent.getStringExtra("manyId") + "-o0-p1-s20-c1-nt0-fs0-sp0-al0-cw320.json";
         webView.loadUrl(Url);
+        Log.d("1111", Url);
         //跳转到浏览器
         //设置不设置到浏览器  在当前activity显示
         webView.setWebViewClient(new WebViewClient() {

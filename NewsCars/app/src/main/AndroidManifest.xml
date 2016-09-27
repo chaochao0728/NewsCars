@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.NewFragmentToAty" />
+        <activity android:name=".ui.activity.ManyFragmentToAty"></activity>
     </application>
 
 </manifest>
