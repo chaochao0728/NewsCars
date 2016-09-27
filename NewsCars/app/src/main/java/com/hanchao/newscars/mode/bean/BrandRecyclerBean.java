@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/22.
+ * 品牌的recyclerView实体类
  */
 public class BrandRecyclerBean {
 

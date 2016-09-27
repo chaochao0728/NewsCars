@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/10.
- * 精品推荐里的两个recycleView的适配器
+ * 精选推荐里的两个recycleView的适配器
  */
 public class PickRecommendRecyclerAdapter extends RecyclerView.Adapter<PickRecommendRecyclerAdapter.PickRecommentViewHolder> {
     private List<String> datas;
@@ -57,13 +57,13 @@ public class PickRecommendRecyclerAdapter extends RecyclerView.Adapter<PickRecom
             }
 
         });
-        if (postion==0) {
+        if (postion == 0) {
             if (postion == p) {
                 holder.tv.setTextColor(Color.parseColor("#303F9F"));
             } else {
                 holder.tv.setTextColor(Color.parseColor("#000000"));
             }
-        }else {
+        } else {
             if (postion == p) {
                 holder.tv.setTextColor(Color.parseColor("#303F9F"));
             } else {

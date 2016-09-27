@@ -17,8 +17,9 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/18.
+ * 快报的适配器
  */
-public class FastReportAdapter extends BaseAdapter{
+public class FastReportAdapter extends BaseAdapter {
     private List<FastReportBean.ResultBean.ListBean> data;
     private Context context;
 
@@ -33,12 +34,12 @@ public class FastReportAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return data!=null?data.size():0;
+        return data != null ? data.size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        return data!=null?data.get(position):null;
+        return data != null ? data.get(position) : null;
     }
 
     @Override
@@ -48,33 +49,35 @@ public class FastReportAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        FastreportViewHolder holder=null;
-        if (convertView==null){
-            convertView= LayoutInflater.from(context).inflate(R.layout.item_fastreport,parent,false);
-            int height= ScreenSize.getHight(context);
-            convertView.setMinimumHeight(height/3);
-            holder=new FastreportViewHolder(convertView);
+        FastreportViewHolder holder = null;
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_fastreport, parent, false);
+            int height = ScreenSize.getHight(context);
+            convertView.setMinimumHeight(height / 3);
+            holder = new FastreportViewHolder(convertView);
             convertView.setTag(holder);
-        }else {
+        } else {
             holder = (FastreportViewHolder) convertView.getTag();
         }
-        FastReportBean.ResultBean.ListBean bean=data.get(position);
-        if (bean!=null){
+        FastReportBean.ResultBean.ListBean bean = data.get(position);
+        if (bean != null) {
             holder.titleTv.setText(bean.getTitle());
-            holder.peopleCoundTv.setText(bean.getReviewcount()+"人浏览");
+            holder.peopleCoundTv.setText(bean.getReviewcount() + "人浏览");
             holder.timeTv.setText(bean.getCreatetime());
             Glide.with(context).load(bean.getBgimage()).into(holder.showImage);
         }
         return convertView;
     }
-    public class FastreportViewHolder{
-        TextView titleTv,peopleCoundTv,timeTv;
+
+    public class FastreportViewHolder {
+        TextView titleTv, peopleCoundTv, timeTv;
         ImageView showImage;
-        public FastreportViewHolder(View view){
-            titleTv= (TextView) view.findViewById(R.id.item_fasereport_titleTv);
-            peopleCoundTv= (TextView) view.findViewById(R.id.item_fasereport_peopleCoundTv);
-            timeTv= (TextView) view.findViewById(R.id.item_fasereport_timeTv);
-            showImage= (ImageView) view.findViewById(R.id.item_fasereport_showImage);
+
+        public FastreportViewHolder(View view) {
+            titleTv = (TextView) view.findViewById(R.id.item_fasereport_titleTv);
+            peopleCoundTv = (TextView) view.findViewById(R.id.item_fasereport_peopleCoundTv);
+            timeTv = (TextView) view.findViewById(R.id.item_fasereport_timeTv);
+            showImage = (ImageView) view.findViewById(R.id.item_fasereport_showImage);
         }
     }
 }

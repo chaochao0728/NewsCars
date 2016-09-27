@@ -22,6 +22,8 @@ import com.google.gson.Gson;
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.NewBean;
 import com.hanchao.newscars.mode.bean.NewFragmentRoateBean;
+import com.hanchao.newscars.mode.net.VolleyInstance;
+import com.hanchao.newscars.mode.net.VolleyResult;
 import com.hanchao.newscars.ui.activity.NewFragmentToAty;
 import com.hanchao.newscars.ui.adapter.NewFragmentAdapter;
 import com.hanchao.newscars.ui.adapter.NewFragmentRotateAdapter;
@@ -70,25 +72,21 @@ public class NewFragment extends AbsBaseFragment {
         listView.setAdapter(adapter);
         Bundle bundle = getArguments();
         String NewFragmentUrl = bundle.getString("URL");
-        RequestQueue queue = Volley.newRequestQueue(NewsCarsApp.getContext());
-        StringRequest sr = new StringRequest(NewFragmentUrl, new Response.Listener<String>() {
+        VolleyInstance.getInstance().startRequest(NewFragmentUrl, new VolleyResult() {
             @Override
-            public void onResponse(String response) {
-                Log.d("1111", response);
+            public void success(String result) {
                 Gson gson = new Gson();
-                NewBean bean = gson.fromJson(response, NewBean.class);
-                Log.d("1111", "bean:" + bean);
+                NewBean bean = gson.fromJson(result, NewBean.class);
                 List<NewBean.ResultBean.NewslistBean> datas = bean.getResult().getNewslist();
-//                Log.d("1111", "datas:" + datas);
                 adapter.setData(datas);
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void failure() {
 
             }
         });
-        queue.add(sr);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -118,6 +116,9 @@ public class NewFragment extends AbsBaseFragment {
         listView.addHeaderView(headView);
     }
 
+    /**
+     * 改变笑点的自定义方法
+     */
     private void changePoints() {
         newFragmentvp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -146,6 +147,9 @@ public class NewFragment extends AbsBaseFragment {
         });
     }
 
+    /**
+     * 添加小点的方法
+     */
     private void addPoints() {
         // 有多少张图加载多少个小点
         for (int i = 0; i < data.size(); i++) {

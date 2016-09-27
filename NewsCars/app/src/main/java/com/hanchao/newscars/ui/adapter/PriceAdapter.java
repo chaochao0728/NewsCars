@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/18.
+ * 行情的适配器
  */
 public class PriceAdapter extends BaseAdapter {
     private Context context;

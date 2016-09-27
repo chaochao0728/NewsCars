@@ -19,6 +19,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by dllo on 16/9/18.
+ * 优创的适配器
  */
 public class YouchuangFfragmentAdapter extends BaseAdapter {
     private List<YouchuangBean.ResultBean.NewslistBean> data;
@@ -64,8 +65,8 @@ public class YouchuangFfragmentAdapter extends BaseAdapter {
         if (bean != null) {
             holder.authorTv.setText(bean.getUsername());
             holder.titleTv.setText(bean.getTitle());
-            holder.zanTv.setText(bean.getPraisenum()+"");
-            holder.talkTv.setText(bean.getReplycount()+"");
+            holder.zanTv.setText(bean.getPraisenum() + "");
+            holder.talkTv.setText(bean.getReplycount() + "");
             holder.timeTv.setText(bean.getPublishtime());
             Glide.with(context).load(bean.getIndexdetail().get(0)).into(holder.youchuangIv);
             Glide.with(context).load(bean.getUserpic()).into(holder.circleIv);
@@ -77,6 +78,7 @@ public class YouchuangFfragmentAdapter extends BaseAdapter {
         TextView authorTv, titleTv, timeTv, zanTv, talkTv;
         ImageView youchuangIv;
         CircleImageView circleIv;
+
         public YouchuangFragmentViewHolder(View view) {
             authorTv = (TextView) view.findViewById(R.id.item_youchuang_authorTv);
             titleTv = (TextView) view.findViewById(R.id.item_youchuang_titleTv);

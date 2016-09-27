@@ -68,5 +68,6 @@ public class NetValues {
     //------------------------筛选-----------------------------------------
     public static final String PICKUP = "http://cars.app.autohome.com.cn/cars_v5.8.0/cars/gethotseries-a2-pm2-v6.1.0-p1-s20.json";
     public static final String BRAND_LISTVIEW = "http://223.99.255.20/cars.app.autohome.com.cn/cars_v5.7.0/cars/brands-pm2-ts635966571635589297.json";
-
+    //--------------------------发现的listView的网址------------------------------------------------------
+    public static final String FIND = "http://223.99.255.20/mobilenc.app.autohome.com.cn/discover_v5.8.0/mall/intelligentrecommend.ashx?a=2&pm=2&v=5.8.5&uid=0&deviceid=99000628573771&gps=38.889659,121.551063&cityid=210200&pid=210000&pageindex=1&pagesize=20&hid";
 }

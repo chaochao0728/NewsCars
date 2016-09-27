@@ -16,8 +16,9 @@ import com.hanchao.newscars.utils.ScreenSize;
  * 常用论坛的fragment
  */
 public class CommonForumFragment extends AbsBaseFragment implements View.OnClickListener {
-    private LinearLayout carforumTv,areaforumTv,topicforumTv;
+    private LinearLayout carforumTv, areaforumTv, topicforumTv;
     private LinearLayout rootView;
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_common_forum;
@@ -25,10 +26,10 @@ public class CommonForumFragment extends AbsBaseFragment implements View.OnClick
 
     @Override
     protected void initView() {
-        carforumTv=byView(R.id.fragment_common_four_carforumTv);
-        areaforumTv=byView(R.id.fragment_common_four_areaforumTv);
-        topicforumTv=byView(R.id.fragment_common_four_topicforumTv);
-        rootView=byView(R.id.fragment_common_forum_footView);
+        carforumTv = byView(R.id.fragment_common_four_carforumTv);
+        areaforumTv = byView(R.id.fragment_common_four_areaforumTv);
+        topicforumTv = byView(R.id.fragment_common_four_topicforumTv);
+        rootView = byView(R.id.fragment_common_forum_footView);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class CommonForumFragment extends AbsBaseFragment implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.fragment_common_four_carforumTv:
                 createWindow();
                 break;
@@ -53,7 +54,7 @@ public class CommonForumFragment extends AbsBaseFragment implements View.OnClick
                 break;
         }
     }
-
+    //自定义的方法创建popupwindow
     private void createWindow() {
         PopupWindow pw = new PopupWindow(getContext());
         int height = ScreenSize.getHight(getContext());

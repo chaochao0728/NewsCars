@@ -4,6 +4,7 @@ import android.view.View;
 
 /**
  * Created by dllo on 16/9/10.
+ * recycleView的接口
  */
 public interface OnRecycleItemClik {
     //短监听

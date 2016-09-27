@@ -13,6 +13,8 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.ManyBean;
+import com.hanchao.newscars.mode.net.VolleyInstance;
+import com.hanchao.newscars.mode.net.VolleyResult;
 import com.hanchao.newscars.ui.adapter.ManyAdapter;
 import com.hanchao.newscars.ui.app.NewsCarsApp;
 
@@ -25,14 +27,16 @@ import java.util.List;
 public class ManyFragment extends AbsBaseFragment {
     private ListView listView;
     private ManyAdapter adapter;
+
     public static ManyFragment newInstance(String str) {
 
         Bundle args = new Bundle();
-        args.putString("URL",str);
+        args.putString("URL", str);
         ManyFragment fragment = new ManyFragment();
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_many;
@@ -40,30 +44,28 @@ public class ManyFragment extends AbsBaseFragment {
 
     @Override
     protected void initView() {
-        listView=byView(R.id.fragment_many_listView);
+        listView = byView(R.id.fragment_many_listView);
     }
 
     @Override
     protected void initDatas() {
-        adapter=new ManyAdapter(context);
+        adapter = new ManyAdapter(context);
         listView.setAdapter(adapter);
-        Bundle bundle=getArguments();
-        String theUrl=bundle.getString("URL");
-        RequestQueue queue= Volley.newRequestQueue(NewsCarsApp.getContext());
-        StringRequest stringRequest=new StringRequest(theUrl, new Response.Listener<String>() {
+        Bundle bundle = getArguments();
+        String theUrl = bundle.getString("URL");
+        VolleyInstance.getInstance().startRequest(theUrl, new VolleyResult() {
             @Override
-            public void onResponse(String response) {
-                Gson gson=new Gson();
-                ManyBean bean=gson.fromJson(response,ManyBean.class);
-                List<ManyBean.ResultBean.ListBean> data=bean.getResult().getList();
+            public void success(String result) {
+                Gson gson = new Gson();
+                ManyBean bean = gson.fromJson(result, ManyBean.class);
+                List<ManyBean.ResultBean.ListBean> data = bean.getResult().getList();
                 adapter.setDatas(data);
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void failure() {
 
             }
         });
-        queue.add(stringRequest);
     }
 }

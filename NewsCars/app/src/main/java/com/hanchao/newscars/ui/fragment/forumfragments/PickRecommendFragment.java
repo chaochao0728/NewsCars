@@ -93,7 +93,7 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
          */
         choutiImageView.setOnClickListener(this);
     }
-
+    //添加数据
     private void buildDatas() {
         data = new ArrayList<>();
         data.add("全部");

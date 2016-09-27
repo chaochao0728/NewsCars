@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/20.
+ * 最新的轮播图的适配器
  */
 public class NewFragmentRotateAdapter extends PagerAdapter {
     private List<NewFragmentRoateBean> datas;

@@ -15,8 +15,9 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/19.
+ * 热帖的适配器
  */
-public class HotTopicAdapter extends BaseAdapter{
+public class HotTopicAdapter extends BaseAdapter {
     private List<HotTopickBean.ResultBean.ListBean> data;
     private Context context;
 
@@ -31,12 +32,12 @@ public class HotTopicAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return data!=null?data.size():0;
+        return data != null ? data.size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        return data!=null?data.get(position):null;
+        return data != null ? data.get(position) : null;
     }
 
     @Override
@@ -46,32 +47,34 @@ public class HotTopicAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        HotTopicViewHolder holder=null;
-        if (convertView==null){
-            convertView= LayoutInflater.from(context).inflate(R.layout.item_hot_topic,parent,false);
-            int height= ScreenSize.getHight(context);
-            convertView.setMinimumHeight(height/6);
-            holder=new HotTopicViewHolder(convertView);
+        HotTopicViewHolder holder = null;
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_hot_topic, parent, false);
+            int height = ScreenSize.getHight(context);
+            convertView.setMinimumHeight(height / 6);
+            holder = new HotTopicViewHolder(convertView);
             convertView.setTag(holder);
-        }else {
-            holder= (HotTopicViewHolder) convertView.getTag();
+        } else {
+            holder = (HotTopicViewHolder) convertView.getTag();
         }
-        HotTopickBean.ResultBean.ListBean bean=data.get(position);
-        if (bean!=null){
+        HotTopickBean.ResultBean.ListBean bean = data.get(position);
+        if (bean != null) {
             holder.titleTv.setText(bean.getTitle());
             holder.authorTv.setText(bean.getBbsname());
             holder.timeTv.setText(bean.getLastreplydate());
-            holder.huiTv.setText(bean.getReplycounts()+"回帖");
+            holder.huiTv.setText(bean.getReplycounts() + "回帖");
         }
         return convertView;
     }
-    public class HotTopicViewHolder{
-        TextView titleTv,authorTv,timeTv,huiTv;
-        public HotTopicViewHolder(View view){
-            titleTv= (TextView) view.findViewById(R.id.item_hot_topic_titleTv);
-            authorTv= (TextView) view.findViewById(R.id.item_hot_topic_authorTv);
-            timeTv= (TextView) view.findViewById(R.id.item_hot_topic_timeTv);
-            huiTv= (TextView) view.findViewById(R.id.item_hot_topic_huiTv);
+
+    public class HotTopicViewHolder {
+        TextView titleTv, authorTv, timeTv, huiTv;
+
+        public HotTopicViewHolder(View view) {
+            titleTv = (TextView) view.findViewById(R.id.item_hot_topic_titleTv);
+            authorTv = (TextView) view.findViewById(R.id.item_hot_topic_authorTv);
+            timeTv = (TextView) view.findViewById(R.id.item_hot_topic_timeTv);
+            huiTv = (TextView) view.findViewById(R.id.item_hot_topic_huiTv);
         }
     }
 }

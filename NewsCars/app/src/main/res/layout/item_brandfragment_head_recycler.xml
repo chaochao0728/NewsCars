@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    >
+    android:layout_margin="2dp">
 
     <ImageView
         android:id="@+id/item_brand_fragme_head_recycler_ima"

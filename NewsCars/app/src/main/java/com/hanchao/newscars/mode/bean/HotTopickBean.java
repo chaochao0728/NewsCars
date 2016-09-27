@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/19.
+ * 热帖的实体类
  */
 public class HotTopickBean {
 

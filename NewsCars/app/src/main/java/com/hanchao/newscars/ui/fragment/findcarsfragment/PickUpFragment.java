@@ -13,6 +13,8 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.PickUpBean;
+import com.hanchao.newscars.mode.net.VolleyInstance;
+import com.hanchao.newscars.mode.net.VolleyResult;
 import com.hanchao.newscars.ui.adapter.PickUpAdapter;
 import com.hanchao.newscars.ui.app.NewsCarsApp;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
@@ -57,23 +59,20 @@ public class PickUpFragment extends AbsBaseFragment implements View.OnClickListe
         listView.setAdapter(adapter);
         Bundle bundle = getArguments();
         String pickUpUrl = bundle.getString("URL");
-        RequestQueue queue = Volley.newRequestQueue(NewsCarsApp.getContext());
-        StringRequest stringRequest = new StringRequest(pickUpUrl, new Response.Listener<String>() {
+        VolleyInstance.getInstance().startRequest(pickUpUrl, new VolleyResult() {
             @Override
-            public void onResponse(String response) {
+            public void success(String result) {
                 Gson gson = new Gson();
-                PickUpBean bean = gson.fromJson(response, PickUpBean.class);
+                PickUpBean bean = gson.fromJson(result, PickUpBean.class);
                 List<PickUpBean.ResultBean.SeriesBean> datas = bean.getResult().getSeries();
                 adapter.setDatas(datas);
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void failure() {
 
             }
         });
-        queue.add(stringRequest);
-
     }
 
     @Override

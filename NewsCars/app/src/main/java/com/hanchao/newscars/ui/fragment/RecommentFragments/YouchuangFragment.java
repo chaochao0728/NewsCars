@@ -13,6 +13,8 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.YouchuangBean;
+import com.hanchao.newscars.mode.net.VolleyInstance;
+import com.hanchao.newscars.mode.net.VolleyResult;
 import com.hanchao.newscars.ui.adapter.YouchuangFfragmentAdapter;
 import com.hanchao.newscars.ui.app.NewsCarsApp;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
@@ -52,23 +54,19 @@ public class YouchuangFragment extends AbsBaseFragment {
         listView.setAdapter(adapter);
         Bundle bundle = getArguments();
         String YouchuangFragmentURL = bundle.getString("URL");
-        RequestQueue queue = Volley.newRequestQueue(NewsCarsApp.getContext());
-        StringRequest request = new StringRequest(YouchuangFragmentURL, new Response.Listener<String>() {
+        VolleyInstance.getInstance().startRequest(YouchuangFragmentURL, new VolleyResult() {
             @Override
-            public void onResponse(String response) {
-                Log.d("111111", response);
+            public void success(String result) {
                 Gson gson = new Gson();
-                YouchuangBean bean = gson.fromJson(response, YouchuangBean.class);
+                YouchuangBean bean = gson.fromJson(result, YouchuangBean.class);
                 List<YouchuangBean.ResultBean.NewslistBean> data = bean.getResult().getNewslist();
-                Log.d("111111", "data:" + data);
                 adapter.setData(data);
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void failure() {
 
             }
         });
-        queue.add(request);
     }
 }

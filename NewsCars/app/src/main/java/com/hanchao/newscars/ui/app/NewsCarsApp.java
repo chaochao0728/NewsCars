@@ -5,6 +5,7 @@ import android.content.Context;
 
 /**
  * Created by dllo on 16/9/8.
+ * app
  */
 public class NewsCarsApp extends Application {
     private static Context context;

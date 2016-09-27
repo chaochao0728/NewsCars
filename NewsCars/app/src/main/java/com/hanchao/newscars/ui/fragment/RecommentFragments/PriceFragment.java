@@ -13,6 +13,8 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.NewsBean;
+import com.hanchao.newscars.mode.net.VolleyInstance;
+import com.hanchao.newscars.mode.net.VolleyResult;
 import com.hanchao.newscars.ui.adapter.PriceAdapter;
 import com.hanchao.newscars.ui.app.NewsCarsApp;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
@@ -52,23 +54,19 @@ public class PriceFragment extends AbsBaseFragment {
         listView.setAdapter(adapter);
         Bundle bundle = getArguments();
         String TheUrl = bundle.getString("URL");
-        RequestQueue queue = Volley.newRequestQueue(NewsCarsApp.getContext());
-        StringRequest request = new StringRequest(TheUrl, new Response.Listener<String>() {
+        VolleyInstance.getInstance().startRequest(TheUrl, new VolleyResult() {
             @Override
-            public void onResponse(String response) {
+            public void success(String result) {
                 Gson gson = new Gson();
-                Log.d("2222", response);
-                NewsBean bean = gson.fromJson(response, NewsBean.class);
+                NewsBean bean = gson.fromJson(result, NewsBean.class);
                 List<NewsBean.ResultBean.NewslistBean> data = bean.getResult().getNewslist();
                 adapter.setData(data);
-                Log.d("2222", "data:" + data);
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void failure() {
 
             }
         });
-        queue.add(request);
     }
 }

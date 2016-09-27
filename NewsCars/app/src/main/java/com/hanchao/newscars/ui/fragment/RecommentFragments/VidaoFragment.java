@@ -13,6 +13,7 @@ import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
 
 public class VidaoFragment extends AbsBaseFragment {
     private ListView listView;
+
     public static VidaoFragment newInstance(String str) {
 
         Bundle args = new Bundle();
@@ -29,7 +30,7 @@ public class VidaoFragment extends AbsBaseFragment {
 
     @Override
     protected void initView() {
-        listView=byView(R.id.fragment_video_listView);
+        listView = byView(R.id.fragment_video_listView);
     }
 
     @Override

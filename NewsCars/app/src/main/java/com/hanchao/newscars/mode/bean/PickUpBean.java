@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/22.
+ * 挑选实体类
  */
 public class PickUpBean {
 

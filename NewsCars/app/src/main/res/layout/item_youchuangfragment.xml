@@ -7,93 +7,85 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
         android:layout_margin="5dp"
-        android:layout_weight="2"
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/item_youchuang_circleimage"
-            android:layout_width="0dp"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@mipmap/ic_launcher"
-            />
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/item_youchuang_authorTv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="hahahahhahahh"
-            android:layout_gravity="center"/>
+            android:textColor="#FF243A91" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="100dp"
         android:layout_margin="5dp"
-        android:layout_weight="4"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/item_youchuang_image"
-            android:layout_width="0dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/item_youchuang_titleTv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text="hahahahahahahha"
-            android:layout_gravity="center"/>
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="hahahahahahahha" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
-        android:layout_weight="1"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/item_youchuang_timeTv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="时间"
             android:textSize="10dp" />
 
         <TextView
             android:id="@+id/item_youchuang_zanTv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="赞" />
         <!--以后要替换成imageView-->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2">
 
-            <ImageView
-                android:layout_width="30sp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:src="@mipmap/talk" />
+        <ImageView
+            android:layout_width="40sp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/talk" />
 
-            <TextView
-                android:id="@+id/item_youchuang_talkTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"/>
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/item_youchuang_talkTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="评论数" />
     </LinearLayout>
+
 
 </LinearLayout>

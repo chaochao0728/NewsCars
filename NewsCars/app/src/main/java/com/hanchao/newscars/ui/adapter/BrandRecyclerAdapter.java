@@ -17,9 +17,10 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/22.
+ * 品牌的Recycler的适配器
  */
-public class BrandRecyclerAdapter extends RecyclerView.Adapter<BrandRecyclerAdapter.brandViewHolder>{
-    private List<BrandRecyclerBean.ResultBean.ListBean>datas;
+public class BrandRecyclerAdapter extends RecyclerView.Adapter<BrandRecyclerAdapter.brandViewHolder> {
+    private List<BrandRecyclerBean.ResultBean.ListBean> datas;
     private Context context;
 
     public BrandRecyclerAdapter(Context context) {
@@ -33,32 +34,33 @@ public class BrandRecyclerAdapter extends RecyclerView.Adapter<BrandRecyclerAdap
 
     @Override
     public brandViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context).inflate(R.layout.item_brandfragment_head_recycler,parent,false);
-        int height= ScreenSize.getHight(context);
-        view.setMinimumHeight(height/8);
-        brandViewHolder holder=new brandViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_brandfragment_head_recycler, parent, false);
+        int height = ScreenSize.getHight(context);
+        view.setMinimumHeight(height / 8);
+        brandViewHolder holder = new brandViewHolder(view);
         return holder;
     }
 
     @Override
     public void onBindViewHolder(brandViewHolder holder, int position) {
-        BrandRecyclerBean.ResultBean.ListBean bean=datas.get(position);
+        BrandRecyclerBean.ResultBean.ListBean bean = datas.get(position);
         holder.textView.setText(bean.getName());
         Glide.with(context).load(bean.getImg()).into(holder.imageView);
     }
 
     @Override
     public int getItemCount() {
-        return datas!=null?datas.size():0;
+        return datas != null ? datas.size() : 0;
     }
 
-    class brandViewHolder extends RecyclerView.ViewHolder{
+    class brandViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
         ImageView imageView;
+
         public brandViewHolder(View itemView) {
             super(itemView);
-            textView= (TextView) itemView.findViewById(R.id.item_brand_fragme_head_recycler_tv);
-            imageView= (ImageView) itemView.findViewById(R.id.item_brand_fragme_head_recycler_ima);
+            textView = (TextView) itemView.findViewById(R.id.item_brand_fragme_head_recycler_tv);
+            imageView = (ImageView) itemView.findViewById(R.id.item_brand_fragme_head_recycler_ima);
         }
     }
 }

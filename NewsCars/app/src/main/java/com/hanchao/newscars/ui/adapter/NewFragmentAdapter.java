@@ -54,7 +54,7 @@ public class NewFragmentAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_newfragment, parent, false);
             int height = ScreenSize.getHight(context);
-            convertView.setMinimumHeight(height / 5);
+            convertView.setMinimumHeight(height / 8);
             holder = new NewFragmentViewHolder(convertView);
             convertView.setTag(holder);
         } else {

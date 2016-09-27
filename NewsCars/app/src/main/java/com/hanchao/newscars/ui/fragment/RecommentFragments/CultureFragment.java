@@ -15,6 +15,8 @@ import com.google.gson.Gson;
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.CultureBean;
 import com.hanchao.newscars.mode.net.NetValues;
+import com.hanchao.newscars.mode.net.VolleyInstance;
+import com.hanchao.newscars.mode.net.VolleyResult;
 import com.hanchao.newscars.ui.adapter.CultureAdapter;
 import com.hanchao.newscars.ui.app.NewsCarsApp;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
@@ -54,25 +56,20 @@ public class CultureFragment extends AbsBaseFragment {
         listView.setAdapter(adapter);
         Bundle bundle = getArguments();
         String TheUrl = bundle.getString("URL");
-        RequestQueue queue = Volley.newRequestQueue(NewsCarsApp.getContext());
-        StringRequest request = new StringRequest(TheUrl, new Response.Listener<String>() {
+        VolleyInstance.getInstance().startRequest(TheUrl, new VolleyResult() {
             @Override
-            public void onResponse(String response) {
+            public void success(String result) {
                 Gson gson = new Gson();
-                Log.d("2222", response);
-                CultureBean bean = gson.fromJson(response, CultureBean.class);
+                CultureBean bean = gson.fromJson(result, CultureBean.class);
                 List<CultureBean.ResultBean.NewslistBean> data = bean.getResult().getNewslist();
                 adapter.setDatas(data);
-                Log.d("2222", "data:" + data);
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void failure() {
 
             }
         });
-        queue.add(request);
-
 
     }
 }

@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/22.
+ * 筛选的适配器
  */
 public class PickUpAdapter extends BaseAdapter {
     private List<PickUpBean.ResultBean.SeriesBean> datas;

@@ -17,6 +17,8 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.FastReportBean;
+import com.hanchao.newscars.mode.net.VolleyInstance;
+import com.hanchao.newscars.mode.net.VolleyResult;
 import com.hanchao.newscars.ui.adapter.FastReportAdapter;
 import com.hanchao.newscars.ui.app.NewsCarsApp;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
@@ -62,22 +64,21 @@ public class FastReportFragment extends AbsBaseFragment implements View.OnClickL
         listView.setAdapter(adapter);
         Bundle bundle = getArguments();
         String fastReportURL = bundle.getString("URL");
-        RequestQueue queue = Volley.newRequestQueue(NewsCarsApp.getContext());
-        StringRequest stringRequest = new StringRequest(fastReportURL, new Response.Listener<String>() {
+        VolleyInstance.getInstance().startRequest(fastReportURL, new VolleyResult() {
             @Override
-            public void onResponse(String response) {
+            public void success(String result) {
                 Gson gson = new Gson();
-                FastReportBean bean = gson.fromJson(response, FastReportBean.class);
+                FastReportBean bean = gson.fromJson(result, FastReportBean.class);
                 List<FastReportBean.ResultBean.ListBean> data = bean.getResult().getList();
                 adapter.setData(data);
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void failure() {
 
             }
         });
-        queue.add(stringRequest);
+
         allBrandTv.setOnClickListener(this);
         allGradeTv.setOnClickListener(this);
     }
