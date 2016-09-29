@@ -1,7 +1,10 @@
 package com.hanchao.newscars.ui.fragment.RecommentFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -16,9 +19,11 @@ import com.hanchao.newscars.mode.bean.CultureBean;
 import com.hanchao.newscars.mode.bean.NewsBean;
 import com.hanchao.newscars.mode.net.VolleyInstance;
 import com.hanchao.newscars.mode.net.VolleyResult;
+import com.hanchao.newscars.ui.activity.NewsFragmentToAty;
 import com.hanchao.newscars.ui.adapter.NewsAdapter;
 import com.hanchao.newscars.ui.app.NewsCarsApp;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
+import com.hanchao.newscars.utils.OnRefreshListener;
 
 import java.util.List;
 
@@ -29,6 +34,7 @@ import java.util.List;
 public class NewsFargent extends AbsBaseFragment {
     private ListView listView;
     private NewsAdapter adapter;
+    private List<NewsBean.ResultBean.NewslistBean> data;
 
     public static NewsFargent newInstance(String str) {
 
@@ -60,7 +66,7 @@ public class NewsFargent extends AbsBaseFragment {
             public void success(String result) {
                 Gson gson = new Gson();
                 NewsBean bean = gson.fromJson(result, NewsBean.class);
-                List<NewsBean.ResultBean.NewslistBean> data = bean.getResult().getNewslist();
+                data = bean.getResult().getNewslist();
                 adapter.setData(data);
             }
 
@@ -69,5 +75,17 @@ public class NewsFargent extends AbsBaseFragment {
 
             }
         });
+        //点击进入二级界面
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String Id = data.get(position).getId() + "";
+                Intent intent = new Intent(context, NewsFragmentToAty.class);
+                intent.putExtra("newsId", Id);
+                startActivity(intent);
+            }
+        });
     }
+
+
 }

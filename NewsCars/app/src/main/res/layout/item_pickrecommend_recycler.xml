@@ -11,5 +11,5 @@
         android:layout_margin="10dp"
         android:text="测试数据"
         android:textColor="@color/selector_color"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 </LinearLayout>

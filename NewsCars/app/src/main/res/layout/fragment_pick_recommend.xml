@@ -22,8 +22,7 @@
                 android:id="@+id/fragment_picRecommend_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                />
+                android:layout_weight="1" />
 
             <ImageView
                 android:id="@+id/fragment_pick_recommend_image_chouTi"
@@ -79,7 +78,7 @@
             android:id="@+id/fragment_pick_recommend_drawer_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="9"/>
+            android:layout_weight="9" />
 
     </LinearLayout>
 

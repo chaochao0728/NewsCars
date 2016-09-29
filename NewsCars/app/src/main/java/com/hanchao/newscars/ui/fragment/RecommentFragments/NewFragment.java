@@ -11,13 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.NewBean;
@@ -27,10 +21,10 @@ import com.hanchao.newscars.mode.net.VolleyResult;
 import com.hanchao.newscars.ui.activity.NewFragmentToAty;
 import com.hanchao.newscars.ui.adapter.NewFragmentAdapter;
 import com.hanchao.newscars.ui.adapter.NewFragmentRotateAdapter;
-import com.hanchao.newscars.ui.app.NewsCarsApp;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
+import com.hanchao.newscars.utils.OnRefreshListener;
+import com.hanchao.newscars.view.ReFlashListView;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +40,12 @@ public class NewFragment extends AbsBaseFragment {
     private LinearLayout pointLl;//轮播图状态改变的小圆点
     private List<NewFragmentRoateBean> data;
     private NewFragmentRotateAdapter vpadapter;
+    private NewBean bean;
+    private String oneTurnViewUrl, twoTurnViewUrl, threeTurnViewUrl, fourTurnViewUrl,
+            fiveTurnViewUrl, sixTurnViewUrl;
+    private ReFlashListView reFlashListView;
+    //上啦刷新适配器
+    private boolean flag = true;
 
     public static NewFragment newInstance(String string) {
 
@@ -64,6 +64,7 @@ public class NewFragment extends AbsBaseFragment {
     @Override
     protected void initView() {
         listView = byView(R.id.fragment_new_listView);
+        reFlashListView=byView(R.id.fragment_new_listView);
     }
 
     @Override
@@ -76,13 +77,61 @@ public class NewFragment extends AbsBaseFragment {
             @Override
             public void success(String result) {
                 Gson gson = new Gson();
-                NewBean bean = gson.fromJson(result, NewBean.class);
+                bean = gson.fromJson(result, NewBean.class);
                 List<NewBean.ResultBean.NewslistBean> datas = bean.getResult().getNewslist();
+                //轮播图网址
+                List<NewBean.ResultBean.FocusimgBean> dates = bean.getResult().getFocusimg();
+                oneTurnViewUrl = dates.get(0).getImgurl();
+                Log.d("1111", oneTurnViewUrl);
+                twoTurnViewUrl = dates.get(1).getImgurl();
+                threeTurnViewUrl = dates.get(2).getImgurl();
+                fourTurnViewUrl = dates.get(3).getImgurl();
+                fiveTurnViewUrl = dates.get(4).getImgurl();
+                sixTurnViewUrl = dates.get(5).getImgurl();
                 adapter.setData(datas);
+                /**
+                 * 获取到数据之后就添加到轮播图中
+                 */
+                builDatas();
+                vpadapter.setDatas(data);
+                newFragmentvp.setCurrentItem(data.size() * 100);
+                //开始轮播
+                handler = new Handler();
+                startRotate();
+                //添加小圆点
+                addPoints();
+                //随着轮播改变小点
+                changePoints();
             }
 
             @Override
             public void failure() {
+
+            }
+        });
+        reFlashListView.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onDownPullRefresh() {
+                String Url = "http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l890560.json";
+                VolleyInstance.getInstance().startRequest(Url, new VolleyResult() {
+                    @Override
+                    public void success(String result) {
+                        Gson gson = new Gson();
+                        bean = gson.fromJson(result, NewBean.class);
+                        List<NewBean.ResultBean.NewslistBean> datas = bean.getResult().getNewslist();
+                        adapter.setData(datas);
+                    }
+
+                    @Override
+                    public void failure() {
+
+                    }
+                });
+                reFlashListView.hideHeaderView();
+            }
+
+            @Override
+            public void onLoadingMore() {
 
             }
         });
@@ -97,27 +146,18 @@ public class NewFragment extends AbsBaseFragment {
                 startActivity(intent);
             }
         });
-        //头布局
+        //头布局 轮播图
         View headView = LayoutInflater.from(context).inflate(R.layout.item_newfragment_head, null);
         newFragmentvp = (ViewPager) headView.findViewById(R.id.new_fragment_rotate_vp);
         pointLl = (LinearLayout) headView.findViewById(R.id.new_fragemnt_rotate_point_container);
-        builDatas();
+        //添加数据的原来在这 但是没有获取完毕就添加了所以是null的
         vpadapter = new NewFragmentRotateAdapter(data, getContext());
         newFragmentvp.setAdapter(vpadapter);
-        vpadapter.setDatas(data);
-        newFragmentvp.setCurrentItem(data.size() * 100);
-        //开始轮播
-        handler = new Handler();
-        startRotate();
-        //添加小圆点
-        addPoints();
-        //随着轮播改变小点
-        changePoints();
         listView.addHeaderView(headView);
     }
 
     /**
-     * 改变笑点的自定义方法
+     * 改变小点的自定义方法
      */
     private void changePoints() {
         newFragmentvp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -169,30 +209,33 @@ public class NewFragment extends AbsBaseFragment {
     }
 
     private Handler handler;
-    private boolean isRotate = false;
+    private boolean isRotate = true;
     private Runnable rotateRunnable;
 
     /**
      * 开始轮播
      */
     private void startRotate() {
-        rotateRunnable = new Runnable() {
-            @Override
-            public void run() {
-                int nowIndex = newFragmentvp.getCurrentItem();
-                newFragmentvp.setCurrentItem(++nowIndex);
-                if (isRotate) {
+
+        if (flag) {
+            rotateRunnable = new Runnable() {
+                @Override
+                public void run() {
+                    int nowIndex = newFragmentvp.getCurrentItem();
+                    newFragmentvp.setCurrentItem(++nowIndex);
                     handler.postDelayed(rotateRunnable, TIME);
                 }
-            }
-        };
-        handler.postDelayed(rotateRunnable, TIME);
+            };
+            handler.postDelayed(rotateRunnable, TIME);
+            flag = false;
+        }
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        isRotate = true;
+        //isRotate = true;
     }
 
     @Override
@@ -206,12 +249,13 @@ public class NewFragment extends AbsBaseFragment {
      */
     private void builDatas() {
         data = new ArrayList<>();
-        data.add(new NewFragmentRoateBean("http://www3.autoimg.cn/newsdfs/g16/M09/4C/16/640x320_0_autohomecar__wKgH11ff_siAT39EAAb11cjL4MY067.jpg"));
-        data.add(new NewFragmentRoateBean("http://www3.autoimg.cn/newsdfs/g6/M13/4C/41/640x320_0_autohomecar__wKjB0VffV46AVS3xAAr_7RZVkJo343.jpg"));
-        data.add(new NewFragmentRoateBean("http://www2.autoimg.cn/newsdfs/g18/M01/48/51/640x320_0_autohomecar__wKgH2VfdXsOAENBxAAHlhJ5YO-I087.jpg"));
-        data.add(new NewFragmentRoateBean("http://www2.autoimg.cn/newsdfs/g17/M13/45/3D/640x320_0_autohomecar__wKgH2FfeYnWAAOUJAALmvKVjQsI150.jpg"));
-        data.add(new NewFragmentRoateBean("http://www3.autoimg.cn/newsdfs/g17/M09/47/9E/640x320_0_autohomecar__wKgH51feKYCAQ02oAAhFNzn7tVU182.jpg"));
-        data.add(new NewFragmentRoateBean("http://www3.autoimg.cn/newsdfs/g17/M06/48/EB/640x320_0_autohomecar__wKgH51ffQBSASzHZAAfasiEN3g4753.jpg"));
+        data.add(new NewFragmentRoateBean(oneTurnViewUrl));
+        data.add(new NewFragmentRoateBean(twoTurnViewUrl));
+        data.add(new NewFragmentRoateBean(threeTurnViewUrl));
+        data.add(new NewFragmentRoateBean(fourTurnViewUrl));
+        data.add(new NewFragmentRoateBean(fiveTurnViewUrl));
+        data.add(new NewFragmentRoateBean(sixTurnViewUrl));
     }
+
 
 }

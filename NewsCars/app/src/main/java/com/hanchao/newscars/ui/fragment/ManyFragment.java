@@ -76,10 +76,10 @@ public class ManyFragment extends AbsBaseFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String Id =data.get(position).getTopicid()+"";
+                String Id = data.get(position).getTopicid() + "";
                 Log.d("1111", Id);
-                Intent intent = new Intent(context,ManyFragmentToAty.class);
-                intent.putExtra("manyId",Id);
+                Intent intent = new Intent(context, ManyFragmentToAty.class);
+                intent.putExtra("manyId", Id);
                 startActivity(intent);
             }
         });

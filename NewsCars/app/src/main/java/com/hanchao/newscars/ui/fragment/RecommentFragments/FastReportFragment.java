@@ -1,9 +1,11 @@
 package com.hanchao.newscars.ui.fragment.RecommentFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -19,6 +21,7 @@ import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.FastReportBean;
 import com.hanchao.newscars.mode.net.VolleyInstance;
 import com.hanchao.newscars.mode.net.VolleyResult;
+import com.hanchao.newscars.ui.activity.FastReportFragmentToAty;
 import com.hanchao.newscars.ui.adapter.FastReportAdapter;
 import com.hanchao.newscars.ui.app.NewsCarsApp;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
@@ -35,6 +38,7 @@ public class FastReportFragment extends AbsBaseFragment implements View.OnClickL
     private LinearLayout rootView;
     private FastReportAdapter adapter;
     private TextView allBrandTv, allGradeTv;
+    private List<FastReportBean.ResultBean.ListBean> data;
 
     public static FastReportFragment newInstance(String str) {
 
@@ -69,7 +73,7 @@ public class FastReportFragment extends AbsBaseFragment implements View.OnClickL
             public void success(String result) {
                 Gson gson = new Gson();
                 FastReportBean bean = gson.fromJson(result, FastReportBean.class);
-                List<FastReportBean.ResultBean.ListBean> data = bean.getResult().getList();
+                data = bean.getResult().getList();
                 adapter.setData(data);
             }
 
@@ -81,6 +85,16 @@ public class FastReportFragment extends AbsBaseFragment implements View.OnClickL
 
         allBrandTv.setOnClickListener(this);
         allGradeTv.setOnClickListener(this);
+        //跳转到详情
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String Id = data.get(position).getId() + "";
+                Intent intent = new Intent(context, FastReportFragmentToAty.class);
+                intent.putExtra("fastReportId", Id);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

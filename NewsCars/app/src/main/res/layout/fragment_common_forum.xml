@@ -1,123 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_common_forum_footView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/fragment_common_forum_footView">
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/fragment_common_four_carforumTv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="horizontal"
         android:layout_margin="10dp"
-        android:id="@+id/fragment_common_four_carforumTv">
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher" />
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 android:text="车系论坛"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="为你的爱车找到队伍"/>
+                android:text="为你的爱车找到队伍" />
 
         </LinearLayout>
 
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#000000"/>
+        android:background="#000000" />
+
     <LinearLayout
+        android:id="@+id/fragment_common_four_areaforumTv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="horizontal"
         android:layout_margin="10dp"
-        android:id="@+id/fragment_common_four_areaforumTv">
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher" />
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 android:text="地区论坛"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="老乡见老乡  两眼泪汪汪"/>
+                android:text="老乡见老乡  两眼泪汪汪" />
 
         </LinearLayout>
 
 
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#000000"/>
+        android:background="#000000" />
+
     <LinearLayout
+        android:id="@+id/fragment_common_four_topicforumTv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="horizontal"
         android:layout_margin="10dp"
-        android:id="@+id/fragment_common_four_topicforumTv">
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher" />
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 android:text="主题论坛"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="兴趣爱好的聚集地"/>
+                android:text="兴趣爱好的聚集地" />
 
         </LinearLayout>
 
 
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#000000"/>
+        android:background="#000000" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"/>
+        android:layout_weight="6" />
 
 </LinearLayout>

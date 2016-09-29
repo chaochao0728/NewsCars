@@ -1,11 +1,13 @@
 package com.hanchao.newscars.ui.fragment.findcarsfragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 
 import com.google.gson.Gson;
@@ -14,6 +16,8 @@ import com.hanchao.newscars.mode.bean.BrandListBean;
 import com.hanchao.newscars.mode.bean.BrandRecyclerBean;
 import com.hanchao.newscars.mode.net.VolleyInstance;
 import com.hanchao.newscars.mode.net.VolleyResult;
+import com.hanchao.newscars.ui.activity.BrandFragmentToAty;
+import com.hanchao.newscars.ui.activity.NewsFragmentToAty;
 import com.hanchao.newscars.ui.adapter.BrandFragmentAdapter;
 import com.hanchao.newscars.ui.adapter.BrandRecyclerAdapter;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
@@ -33,6 +37,7 @@ public class BrandFragment extends AbsBaseFragment {
     private List<String> groupList;
     private Map<String, List<BrandListBean.ResultBean.BrandlistBean.ListBean>> childs;
     private String Url = "http://223.99.255.20/cars.app.autohome.com.cn/dealer_v5.7.0/dealer/hotbrands-pm2.json";
+    private List<BrandListBean.ResultBean.BrandlistBean> datas;
 
     public static BrandFragment newInstance(String str) {
 
@@ -58,7 +63,7 @@ public class BrandFragment extends AbsBaseFragment {
         adapter = new BrandFragmentAdapter(context);
         listView.setAdapter(adapter);
         Bundle bundle = getArguments();
-        String string = bundle.getString("URL");
+        final String string = bundle.getString("URL");
         VolleyInstance.getInstance().startRequest(string, new VolleyResult() {
             @Override
             public void success(String result) {
@@ -67,7 +72,7 @@ public class BrandFragment extends AbsBaseFragment {
                 childs = new HashMap<>();
                 BrandListBean bean = gson.fromJson(result, BrandListBean.class);
                 //A-Z的解析
-                List<BrandListBean.ResultBean.BrandlistBean> datas = bean.getResult().getBrandlist();
+                datas = bean.getResult().getBrandlist();
                 for (int i = 0; i < datas.size(); i++) {
                     String letter = datas.get(i).getLetter();
                     groupList.add(letter);
@@ -84,6 +89,16 @@ public class BrandFragment extends AbsBaseFragment {
             @Override
             public void failure() {
 
+            }
+        });
+        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                String Id = datas.get(groupPosition).getList().get(childPosition).getId() + "";
+                Intent intent = new Intent(context, BrandFragmentToAty.class);
+                intent.putExtra("BrandId", Id);
+                startActivity(intent);
+                return false;
             }
         });
         addHeadView();

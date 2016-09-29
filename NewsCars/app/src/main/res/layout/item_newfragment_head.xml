@@ -17,7 +17,7 @@
             android:id="@+id/new_fragemnt_rotate_point_container"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="bottom|center_horizontal"
             android:layout_marginBottom="10dp"
             android:orientation="horizontal" />
     </FrameLayout>

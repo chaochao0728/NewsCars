@@ -1,7 +1,10 @@
 package com.hanchao.newscars.ui.fragment.RecommentFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,6 +18,7 @@ import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.NewsBean;
 import com.hanchao.newscars.mode.net.VolleyInstance;
 import com.hanchao.newscars.mode.net.VolleyResult;
+import com.hanchao.newscars.ui.activity.NewsFragmentToAty;
 import com.hanchao.newscars.ui.adapter.PriceAdapter;
 import com.hanchao.newscars.ui.app.NewsCarsApp;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
@@ -28,6 +32,7 @@ import java.util.List;
 public class PriceFragment extends AbsBaseFragment {
     private ListView listView;
     private PriceAdapter adapter;
+    private List<NewsBean.ResultBean.NewslistBean> data;
 
     public static PriceFragment newInstance(String str) {
 
@@ -59,13 +64,23 @@ public class PriceFragment extends AbsBaseFragment {
             public void success(String result) {
                 Gson gson = new Gson();
                 NewsBean bean = gson.fromJson(result, NewsBean.class);
-                List<NewsBean.ResultBean.NewslistBean> data = bean.getResult().getNewslist();
+                data = bean.getResult().getNewslist();
                 adapter.setData(data);
             }
 
             @Override
             public void failure() {
 
+            }
+        });
+        //点击进入二级界面 没有显示
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String Id = data.get(position).getId() + "";
+                Intent intent = new Intent(context, NewsFragmentToAty.class);
+                intent.putExtra("newsId", Id);
+                startActivity(intent);
             }
         });
     }

@@ -4,24 +4,30 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:orientation="vertical">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:text="24小时内热门"
-        android:layout_margin="10dp"
-        android:textSize="15sp"
-        android:textColor="#00ff00"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#ff0000"/>
+        android:background="#FF706D71" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="0.5"
+        android:text="24小时内热门"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#FF706D71" />
 
     <ListView
         android:id="@+id/hot_topic_listView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="10dp"
-        android:layout_weight="10"/>
+        android:layout_weight="10" />
 
 </LinearLayout>

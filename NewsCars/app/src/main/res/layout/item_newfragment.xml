@@ -2,37 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/item_newfragment_iv"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:layout_weight="1" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
         android:layout_weight="3"
-        android:orientation="vertical"
-        android:layout_marginRight="10dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/item_newfragment_titleTv"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:textSize="15sp"
+            android:layout_marginTop="8dp"
             android:layout_weight="2"
-            android:layout_marginTop="8dp"/>
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/item_newfragment_timeTv"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1" />
     </LinearLayout>
 
 </LinearLayout>

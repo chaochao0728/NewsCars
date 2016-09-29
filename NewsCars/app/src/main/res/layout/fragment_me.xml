@@ -35,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/people" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/qq" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -75,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/weibo" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -95,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/weixin" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -121,9 +121,10 @@
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/duihuan" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -143,9 +144,10 @@
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/youhui" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -165,9 +167,10 @@
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/fivexing" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -187,9 +190,10 @@
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/time" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -197,7 +201,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_weight="9"
                     android:gravity="center_vertical"
-                    android:text="我的收藏" />
+                    android:text="浏览历史" />
 
             </LinearLayout>
 
@@ -209,9 +213,10 @@
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/caogao" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -231,9 +236,10 @@
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/shezhi" />
 
                 <TextView
                     android:layout_width="0dp"

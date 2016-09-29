@@ -19,7 +19,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.NewFragmentToAty" />
-        <activity android:name=".ui.activity.ManyFragmentToAty"></activity>
+        <activity android:name=".ui.activity.ManyFragmentToAty" />
+        <activity android:name=".ui.activity.FastReportFragmentToAty" />
+        <activity android:name=".ui.activity.NewsFragmentToAty" />
+        <activity android:name=".ui.activity.HotTopicFragmentToAty" />
+        <activity android:name=".ui.activity.BrandFragmentToAty" />
+        <activity android:name=".ui.activity.VidaoFragmentToAty"></activity>
     </application>
 
 </manifest>
