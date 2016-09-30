@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.net.NetValues;
@@ -26,6 +30,8 @@ public class FindCarFragment extends AbsBaseFragment {
     private ViewPager viewPager;
     private List<Fragment> datas;
     private FindCarAdapter adapter;
+    private ImageView imageView;
+
 
     public static FindCarFragment newInstance() {
         FindCarFragment fragment = new FindCarFragment();
@@ -41,6 +47,8 @@ public class FindCarFragment extends AbsBaseFragment {
     protected void initView() {
         tabLayout = byView(R.id.fragment_find_car_tabLayout);
         viewPager = byView(R.id.fragment_find_car_viewPager);
+        imageView = byView(R.id.fragment_find_car_iv);
+
     }
 
     @Override
@@ -55,5 +63,11 @@ public class FindCarFragment extends AbsBaseFragment {
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabLayout.setTabTextColors(Color.GRAY, Color.BLUE);
         tabLayout.setupWithViewPager(viewPager);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }

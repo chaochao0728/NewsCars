@@ -26,14 +26,14 @@
             android:layout_margin="5dp"
             android:layout_weight="3"
             android:text="题目"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/item_pick_up_priceTv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="5dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="price"
             android:textColor="#ff0000" />
 

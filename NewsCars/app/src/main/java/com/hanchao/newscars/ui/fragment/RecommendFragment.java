@@ -13,6 +13,7 @@ import com.hanchao.newscars.ui.fragment.RecommentFragments.FastReportFragment;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.NewFragment;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.NewsFargent;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.PriceFragment;
+import com.hanchao.newscars.ui.fragment.RecommentFragments.TalkFragment;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.VidaoFragment;
 import com.hanchao.newscars.ui.fragment.RecommentFragments.YouchuangFragment;
 
@@ -75,7 +76,7 @@ public class RecommendFragment extends AbsBaseFragment {
         data.add(CultureFragment.newInstance(NetValues.CHANGGE_DRESS));
         data.add(NewsFargent.newInstance(NetValues.TRALE));
         data.add(VidaoFragment.newInstance(NetValues.ORIGINAL_VIDEO));
-        data.add(NewsFargent.newInstance(NetValues.TALKPERSON));
+        data.add(TalkFragment.newInstance(NetValues.TALKPERSON));
     }
 
 

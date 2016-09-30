@@ -35,7 +35,8 @@
             android:id="@+id/item_hot_topic_huiTv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:gravity="center_vertical"/>
 
     </LinearLayout>
 

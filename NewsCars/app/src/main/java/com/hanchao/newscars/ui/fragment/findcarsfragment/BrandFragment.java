@@ -2,13 +2,17 @@ package com.hanchao.newscars.ui.fragment.findcarsfragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import com.google.gson.Gson;
 import com.hanchao.newscars.R;
@@ -21,6 +25,7 @@ import com.hanchao.newscars.ui.activity.NewsFragmentToAty;
 import com.hanchao.newscars.ui.adapter.BrandFragmentAdapter;
 import com.hanchao.newscars.ui.adapter.BrandRecyclerAdapter;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
+import com.hanchao.newscars.utils.ScreenSize;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,6 +43,7 @@ public class BrandFragment extends AbsBaseFragment {
     private Map<String, List<BrandListBean.ResultBean.BrandlistBean.ListBean>> childs;
     private String Url = "http://223.99.255.20/cars.app.autohome.com.cn/dealer_v5.7.0/dealer/hotbrands-pm2.json";
     private List<BrandListBean.ResultBean.BrandlistBean> datas;
+    private LinearLayout rootLayout;
 
     public static BrandFragment newInstance(String str) {
 
@@ -56,6 +62,8 @@ public class BrandFragment extends AbsBaseFragment {
     @Override
     protected void initView() {
         listView = byView(R.id.fragment_brand_expandableListView);
+        rootLayout = byView(R.id.brand_rootView);
+
     }
 
     @Override
@@ -95,13 +103,23 @@ public class BrandFragment extends AbsBaseFragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 String Id = datas.get(groupPosition).getList().get(childPosition).getId() + "";
-                Intent intent = new Intent(context, BrandFragmentToAty.class);
-                intent.putExtra("BrandId", Id);
-                startActivity(intent);
+                createWindow();
                 return false;
             }
         });
         addHeadView();
+    }
+
+    private void createWindow() {
+        PopupWindow pw = new PopupWindow(getContext());
+        int height = ScreenSize.getHight(getContext());
+        pw.setHeight(height);
+        pw.setWidth(400);
+        View v = LayoutInflater.from(context).inflate(R.layout.frament_brand_popwindow, null);
+        pw.setContentView(v);
+        pw.setFocusable(true);
+        pw.setOutsideTouchable(true);
+        pw.showAtLocation(rootLayout, Gravity.RIGHT, 0, 0);
     }
 
     /**
