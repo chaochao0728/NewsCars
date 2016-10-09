@@ -69,6 +69,7 @@ public class BrandFragment extends AbsBaseFragment {
     @Override
     protected void initDatas() {
         adapter = new BrandFragmentAdapter(context);
+        listView.setGroupIndicator(null);
         listView.setAdapter(adapter);
         Bundle bundle = getArguments();
         final String string = bundle.getString("URL");

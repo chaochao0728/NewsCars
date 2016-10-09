@@ -64,7 +64,7 @@ public class NewFragment extends AbsBaseFragment {
     @Override
     protected void initView() {
         listView = byView(R.id.fragment_new_listView);
-        reFlashListView=byView(R.id.fragment_new_listView);
+        reFlashListView = byView(R.id.fragment_new_listView);
     }
 
     @Override
@@ -109,25 +109,36 @@ public class NewFragment extends AbsBaseFragment {
 
             }
         });
+        //下拉刷新
         reFlashListView.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onDownPullRefresh() {
-                String Url = "http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l890560.json";
-                VolleyInstance.getInstance().startRequest(Url, new VolleyResult() {
+                new Thread(new Runnable() {
                     @Override
-                    public void success(String result) {
-                        Gson gson = new Gson();
-                        bean = gson.fromJson(result, NewBean.class);
-                        List<NewBean.ResultBean.NewslistBean> datas = bean.getResult().getNewslist();
-                        adapter.setData(datas);
-                    }
+                    public void run() {
+                        String Url = "http://app.api.autohome.com.cn/autov4.8.8/news/newslist-pm1-c0-nt0-p1-s30-l890560.json";
+                        VolleyInstance.getInstance().startRequest(Url, new VolleyResult() {
+                            @Override
+                            public void success(String result) {
+                                try {
+                                    Thread.sleep(2000);
+                                    Gson gson = new Gson();
+                                    bean = gson.fromJson(result, NewBean.class);
+                                    List<NewBean.ResultBean.NewslistBean> datas = bean.getResult().getNewslist();
+                                    adapter.setData(datas);
+                                    reFlashListView.hideHeaderView();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
 
-                    @Override
-                    public void failure() {
+                            @Override
+                            public void failure() {
 
+                            }
+                        });
                     }
-                });
-                reFlashListView.hideHeaderView();
+                }).start();
             }
 
             @Override

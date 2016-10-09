@@ -25,48 +25,53 @@
 
             <RadioButton
                 android:id="@+id/mainBtn_recommend"
-                android:layout_width="0dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_marginLeft="21dp"
                 android:background="@drawable/selecter_recommend"
                 android:button="@null"
-                android:gravity="center" />
+                android:paddingBottom="10dp" />
 
             <RadioButton
                 android:id="@+id/mainBtn_forum"
-                android:layout_width="0dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="21dp"
                 android:background="@drawable/selecter_forum"
                 android:button="@null"
-                android:gravity="center" />
+                android:padding="10dp" />
 
             <RadioButton
                 android:id="@+id/mainBtn_findCar"
-                android:layout_width="0dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="21dp"
                 android:background="@drawable/selecter_findcar"
                 android:button="@null"
-                android:gravity="center" />
+                android:padding="10dp" />
 
             <RadioButton
                 android:id="@+id/mainBtn_find"
-                android:layout_width="0dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="21dp"
                 android:background="@drawable/selecter_find"
                 android:button="@null"
-                android:gravity="center" />
+                android:padding="10dp" />
 
             <RadioButton
                 android:id="@+id/mainBtn_me"
-                android:layout_width="0dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="21dp"
                 android:background="@drawable/selecter_me"
                 android:button="@null"
-                android:gravity="center" />
+                android:padding="10dp" />
 
 
         </RadioGroup>

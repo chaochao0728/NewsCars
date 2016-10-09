@@ -82,6 +82,7 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
                 FragmentTransaction transaction = managers.beginTransaction();
                 transaction.replace(R.id.fragment_picRecommend_replaceView, ManyFragment.newInstance(list[pos]));
                 transaction.commit();
+                rootView.closeDrawer(drawerView);
             }
         });
         FragmentManager fragmentManager = getChildFragmentManager();
@@ -93,6 +94,7 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
          */
         choutiImageView.setOnClickListener(this);
     }
+
     //添加数据
     private void buildDatas() {
         data = new ArrayList<>();
@@ -145,7 +147,6 @@ public class PickRecommendFragment extends AbsBaseFragment implements View.OnCli
         switch (v.getId()) {
             case R.id.fragment_pick_recommend_image_chouTi:
                 rootView.openDrawer(drawerView);
-
                 break;
         }
     }

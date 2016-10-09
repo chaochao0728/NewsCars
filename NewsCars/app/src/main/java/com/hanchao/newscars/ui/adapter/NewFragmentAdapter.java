@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.hanchao.newscars.R;
+import com.hanchao.newscars.mode.bean.FastReportToAtyBean;
 import com.hanchao.newscars.mode.bean.NewBean;
 import com.hanchao.newscars.utils.ScreenSize;
 import com.squareup.picasso.Picasso;

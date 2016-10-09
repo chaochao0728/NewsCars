@@ -7,11 +7,23 @@ import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.hanchao.newscars.R;
+import com.hanchao.newscars.mode.bean.FastReportToAtyBean;
+import com.hanchao.newscars.mode.net.VolleyInstance;
+import com.hanchao.newscars.mode.net.VolleyResult;
+import com.hanchao.newscars.ui.adapter.FastReportSecondToAtyAdapter;
+import com.hanchao.newscars.ui.adapter.FastReportToAtyAdapter;
+
+import java.util.List;
 
 public class FastReportFragmentToAty extends AbsBaseActivity {
-    private WebView webView;
+    //    private WebView webView;
+    //第二界面的listView
+    private ListView listView;
+    private List<FastReportToAtyBean.ResultBean.MessagelistBean> data;
 
     @Override
     protected int setLayout() {
@@ -20,7 +32,8 @@ public class FastReportFragmentToAty extends AbsBaseActivity {
 
     @Override
     protected void initView() {
-        webView = byView(R.id.activity_fast_report_fragment_to_aty_web_view);
+//        webView = byView(R.id.activity_fast_report_fragment_to_aty_web_view);
+        listView = byView(R.id.activity_fast_report_to_aty_list_view);
     }
 
     @Override
@@ -28,36 +41,25 @@ public class FastReportFragmentToAty extends AbsBaseActivity {
         Intent intent = getIntent();
         String Url = "http://cont.app.autohome.com.cn/autov5.0.0/content/News/fastnewscontent-n" +
                 intent.getStringExtra("fastReportId") + "-lastid0-o1.json";
-        webView.loadUrl(Url);
+//        webView.loadUrl(Url);
         Log.d("1111", Url);
-        //跳转到浏览器
-        //设置不设置到浏览器  在当前activity显示
-        webView.setWebViewClient(new WebViewClient() {
+        final FastReportToAtyAdapter atyAdapter = new FastReportToAtyAdapter(this);
+        listView.setAdapter(atyAdapter);
+        VolleyInstance.getInstance().startRequest(Url, new VolleyResult() {
+            @Override
+            public void success(String result) {
+                Gson gson = new Gson();
+                FastReportToAtyBean bean = gson.fromJson(result, FastReportToAtyBean.class);
+                data = bean.getResult().getMessagelist();
+                atyAdapter.setData(data);
+            }
 
+            @Override
+            public void failure() {
+
+            }
         });
-        //设置WebView加载网页的属性
-        //WebSettings
-        WebSettings webSettings = webView.getSettings();
-        // 让WebView能够执行javaScript
-        webSettings.setJavaScriptEnabled(true);
-        // 让JavaScript可以自动打开windows
-        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
-        // 设置缓存
-        webSettings.setAppCacheEnabled(true);
-        // 设置缓存模式,一共有四种模式
-        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        // 设置缓存路径
-        webSettings.setAppCachePath("");
-        // 支持缩放(适配到当前屏幕)
-        webSettings.setSupportZoom(true);
-        // 将图片调整到合适的大小
-        webSettings.setUseWideViewPort(true);
-        // 支持内容重新布局,一共有四种方式
-        // 默认的是NARROW_COLUMNS
-        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        // 设置可以被显示的屏幕控制
-        webSettings.setDisplayZoomControls(true);
-        // 设置默认字体大小
-        webSettings.setDefaultFontSize(12);
+
+
     }
 }

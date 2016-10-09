@@ -38,7 +38,7 @@ public class FindFragmentLikeAdapter extends RecyclerView.Adapter<FindFragmentLi
         View view = LayoutInflater.from(context).inflate(R.layout.item_fragment_find_head_item, parent, false);
         int width = ScreenSize.getScreenSize(ScreenSize.screenState.WIDTH);
         int height = ScreenSize.getScreenSize(ScreenSize.screenState.HEIGHT);
-        view.setMinimumHeight(height / 8);
+        view.setMinimumHeight(height / 10);
         view.setMinimumWidth(width / 2);
         findLikeViewHolder holder = new findLikeViewHolder(view);
         return holder;

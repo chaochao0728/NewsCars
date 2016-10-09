@@ -7,13 +7,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="5dp"
+        android:layout_height="40dp"
+        android:layout_margin="2dp"
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/item_youchuang_circleimage"
-            android:layout_width="60dp"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
             android:src="@mipmap/ic_launcher" />
 
@@ -32,7 +32,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_margin="5dp"
+        android:layout_margin="2dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -54,7 +54,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_margin="5dp"
+        android:layout_margin="2dp"
         android:orientation="horizontal">
 
         <TextView
@@ -83,8 +83,8 @@
             android:id="@+id/item_youchuang_talkTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
+            android:layout_marginLeft="4dp"
+            android:gravity="center_vertical"
             android:text="评论数" />
     </LinearLayout>
 
