@@ -80,8 +80,12 @@ public class NewsFargent extends AbsBaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String Id = data.get(position).getId() + "";
+                String Title = data.get(position).getTitle();
+                String Url = data.get(position).getSmallpic();
                 Intent intent = new Intent(context, NewsFragmentToAty.class);
                 intent.putExtra("newsId", Id);
+                intent.putExtra("Title", Title);
+                intent.putExtra("Url", Url);
                 startActivity(intent);
             }
         });

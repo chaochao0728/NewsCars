@@ -19,7 +19,7 @@ import com.hanchao.newscars.utils.OnRefreshListener;
 /**
  * Created by dllo on 16/9/28.
  */
-public class ReFlashListView extends ListView implements AbsListView.OnScrollListener{
+public class ReFlashListView extends ListView implements AbsListView.OnScrollListener {
     private static final String TAG = "RefreshListView";
     private int firstVisibleItemPosition;//屏幕显示在第一个的item的索引
     private View headerView;//头布局的对象
@@ -49,7 +49,7 @@ public class ReFlashListView extends ListView implements AbsListView.OnScrollLis
     private void initHeaderView() {
         headerView = View.inflate(getContext(), R.layout.reflash_view_head_view, null);
         mprogressBar = (ProgressBar) headerView.findViewById(R.id.pb_listview_header);
-        //ivArrow = (ImageView) headerView.findViewById(R.id.iv_icon_refresh);
+//        ivArrow = (ImageView) headerView.findViewById(R.id.iv_icon_refresh);
         headerView.measure(0, 0);//系统会帮我们测量出headerView的高度
         headerViewHeight = headerView.getMeasuredHeight();
         headerView.setPadding(0, -headerViewHeight, 0, 0);

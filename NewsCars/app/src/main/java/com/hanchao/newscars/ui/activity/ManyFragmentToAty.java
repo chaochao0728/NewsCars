@@ -10,6 +10,10 @@ import android.webkit.WebViewClient;
 
 import com.hanchao.newscars.R;
 
+/**
+ * 所有复用的详情页
+ */
+
 public class ManyFragmentToAty extends AbsBaseActivity {
     private WebView webView;
 

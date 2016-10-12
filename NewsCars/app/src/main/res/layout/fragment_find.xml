@@ -15,6 +15,6 @@
         android:id="@+id/find_fragment_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp" />
 
 </LinearLayout>

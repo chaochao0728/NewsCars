@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:orientation="vertical">
 
     <RadioGroup
+        android:id="@+id/fragment_brand_popwindow_radiogroup"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
@@ -28,12 +30,11 @@
             android:text="全部" />
     </RadioGroup>
 
-    <FrameLayout
-        android:id="@+id/fragment_brand_popwindow_replayView"
+    <ExpandableListView
+        android:id="@+id/fragment_brand_popwindow_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1" />
 
-    </FrameLayout>
 
 </LinearLayout>

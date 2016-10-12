@@ -8,6 +8,6 @@
         android:id="@+id/item_fragment_brand_groupTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp" />
 
 </LinearLayout>

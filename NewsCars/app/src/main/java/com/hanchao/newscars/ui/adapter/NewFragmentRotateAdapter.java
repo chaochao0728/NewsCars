@@ -1,6 +1,7 @@
 package com.hanchao.newscars.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,17 +11,25 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.NewFragmentRoateBean;
+import com.hanchao.newscars.mode.bean.RoateBean;
+import com.hanchao.newscars.ui.activity.RoateActivity;
 
 import java.util.List;
 
 /**
  * Created by dllo on 16/9/20.
- * 最新的轮播图的适配器
+ * 所有的轮播图的适配器
  */
 public class NewFragmentRotateAdapter extends PagerAdapter {
     private List<NewFragmentRoateBean> datas;
     private Context context;
     private LayoutInflater inflater;
+    private List<RoateBean.ResultBean.ListBean> data;
+
+    public void setData(List<RoateBean.ResultBean.ListBean> data) {
+        this.data = data;
+        notifyDataSetChanged();
+    }
 
     public NewFragmentRotateAdapter(List<NewFragmentRoateBean> datas, Context context) {
         this.datas = datas;
@@ -49,12 +58,20 @@ public class NewFragmentRotateAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        int newPosition = position % datas.size();
+    public Object instantiateItem(ViewGroup container, final int position) {
+        final int newPosition = position % datas.size();
         View convertView = inflater.inflate(R.layout.item_newfragment_head_viewpager, container, false);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.new_fragment_item_viewPager_iv);
         Glide.with(context).load(datas.get(newPosition).getImgUrl()).into(imageView);
         container.addView(convertView);
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, RoateActivity.class);
+                intent.putExtra("roateUrl", data.get(newPosition).getUrl());
+                context.startActivity(intent);
+            }
+        });
         return convertView;
     }
 

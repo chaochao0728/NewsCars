@@ -53,7 +53,7 @@ public class VidaoFragmentAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_vidao_fragment_list_view, parent, false);
             holder = new VidaoFragmentViewHolder(convertView);
             int height = ScreenSize.getHight(context);
-            convertView.setMinimumHeight(height / 6);
+            convertView.setMinimumHeight(height / 8);
             convertView.setTag(holder);
         } else {
             holder = (VidaoFragmentViewHolder) convertView.getTag();

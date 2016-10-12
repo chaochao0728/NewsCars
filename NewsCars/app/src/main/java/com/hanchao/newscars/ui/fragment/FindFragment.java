@@ -1,5 +1,6 @@
 package com.hanchao.newscars.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
@@ -12,14 +13,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.FindFragmentListBean;
 import com.hanchao.newscars.mode.bean.NewFragmentRoateBean;
+import com.hanchao.newscars.mode.bean.RoateBean;
 import com.hanchao.newscars.mode.net.NetValues;
 import com.hanchao.newscars.mode.net.VolleyInstance;
 import com.hanchao.newscars.mode.net.VolleyResult;
+import com.hanchao.newscars.ui.activity.RoateActivity;
 import com.hanchao.newscars.ui.adapter.FindFragmentLikeAdapter;
 import com.hanchao.newscars.ui.adapter.FindFragmentListViewAdapter;
 import com.hanchao.newscars.ui.adapter.FindFragmentRecommendAdapter;
@@ -42,6 +46,9 @@ public class FindFragment extends AbsBaseFragment {
     private List<NewFragmentRoateBean> data;
     private NewFragmentRotateAdapter vpadapter;
     private static final int TIME = 3000;
+    private String oneTurnViewUrl, twoTurnViewUrl, threeTurnViewUrl, fourTurnViewUrl,
+            fiveTurnViewUrl;
+    private String rotateUrl = NetValues.FIND_ROTATE;
 
     public static FindFragment newInstance() {
         FindFragment fragment = new FindFragment();
@@ -83,18 +90,8 @@ public class FindFragment extends AbsBaseFragment {
         View headView = LayoutInflater.from(context).inflate(R.layout.item_newfragment_head, null);
         newFragmentvp = (ViewPager) headView.findViewById(R.id.new_fragment_rotate_vp);
         pointLl = (LinearLayout) headView.findViewById(R.id.new_fragemnt_rotate_point_container);
-        builDatas();
         vpadapter = new NewFragmentRotateAdapter(data, getContext());
         newFragmentvp.setAdapter(vpadapter);
-        vpadapter.setDatas(data);
-        newFragmentvp.setCurrentItem(data.size() * 100);
-        //开始轮播
-        handler = new Handler();
-        startRotate();
-        //添加小圆点
-        addPoints();
-        //随着轮播改变小点
-        changePoints();
         /**
          *猜你喜欢的recycleView的头布局
          */
@@ -110,7 +107,6 @@ public class FindFragment extends AbsBaseFragment {
                 Gson gson = new Gson();
                 FindFragmentListBean bean = gson.fromJson(result, FindFragmentListBean.class);
                 List<FindFragmentListBean.ResultBean.ModulelistBean.ListBean> datas = bean.getResult().getModulelist().get(0).getList();
-                Log.d("FindFragment", "datas:" + datas);
                 likeAdapter.setDatas(datas);
             }
 
@@ -136,7 +132,6 @@ public class FindFragment extends AbsBaseFragment {
                 Gson gson = new Gson();
                 FindFragmentListBean bean = gson.fromJson(result, FindFragmentListBean.class);
                 List<FindFragmentListBean.ResultBean.ModulelistBean.ListBean> data = bean.getResult().getModulelist().get(1).getList();
-                Log.d("FindFragment", "data:" + data);
                 recommendAdapter.setData(data);
             }
 
@@ -149,7 +144,47 @@ public class FindFragment extends AbsBaseFragment {
         listView.addHeaderView(headView);
         listView.addHeaderView(headLikeView);
         listView.addHeaderView(headRecommendView);
+        //轮播图数据
+        VolleyInstance.getInstance().startRequest(rotateUrl, new VolleyResult() {
+            @Override
+            public void success(String result) {
+                Gson gson = new Gson();
+                RoateBean bean = gson.fromJson(result, RoateBean.class);
+                List<RoateBean.ResultBean.ListBean> date = bean.getResult().getList();
+                //轮播图跳转数据
+                vpadapter.setData(date);
+                //轮播图数据
+                oneTurnViewUrl = date.get(0).getImgurl();
+                twoTurnViewUrl = date.get(1).getImgurl();
+                threeTurnViewUrl = date.get(2).getImgurl();
+                fourTurnViewUrl = date.get(3).getImgurl();
+//                fiveTurnViewUrl = date.get(4).getImgurl();
+                builDatas();
+                vpadapter.setDatas(data);
+                newFragmentvp.setCurrentItem(data.size() * 100);
+                //开始轮播
+                handler = new Handler();
+                startRotate();
+                //添加小圆点
+                addPoints();
+                //随着轮播改变小点
+                changePoints();
+                newFragmentvp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getContext(), RoateActivity.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            @Override
+            public void failure() {
+
+            }
+        });
     }
+
 
     private void changePoints() {
         newFragmentvp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -235,11 +270,11 @@ public class FindFragment extends AbsBaseFragment {
      */
     private void builDatas() {
         data = new ArrayList<>();
-        data.add(new NewFragmentRoateBean("http://app2.autoimg.cn/appdfs/g18/M0A/4F/80/autohomecar__wKgH2VfjgrGAf45ZAAG4O89fQA0913.jpg"));
-        data.add(new NewFragmentRoateBean("http://app2.autoimg.cn/appdfs/g21/M0F/31/F4/autohomecar__wKjBwlfjgyWAb-8QAAIwQFHA0CQ346.jpg"));
-        data.add(new NewFragmentRoateBean("http://app2.autoimg.cn/appdfs/g22/M0C/32/2B/autohomecar__wKgFVlfjq4GAentxAAFe31duapA704.jpg"));
-        data.add(new NewFragmentRoateBean("http://app2.autoimg.cn/appdfs/g13/M00/50/63/autohomecar__wKgH1Ffjky2AZ11LAAJTMu2PiLQ967.jpg"));
-        data.add(new NewFragmentRoateBean("http://app2.autoimg.cn/appdfs/g11/M09/51/F6/autohomecar__wKjBzFfjbNqACW_YAAKKXo-uUyc629.jpg"));
+        data.add(new NewFragmentRoateBean(oneTurnViewUrl));
+        data.add(new NewFragmentRoateBean(twoTurnViewUrl));
+        data.add(new NewFragmentRoateBean(threeTurnViewUrl));
+        data.add(new NewFragmentRoateBean(fourTurnViewUrl));
+//        data.add(new NewFragmentRoateBean(fiveTurnViewUrl));
     }
     //轮播结束
 }

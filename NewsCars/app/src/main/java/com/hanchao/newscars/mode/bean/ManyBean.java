@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/19.
- *论坛的所有碎片的实体类
+ * 论坛的所有碎片的实体类
  */
 public class ManyBean {
 

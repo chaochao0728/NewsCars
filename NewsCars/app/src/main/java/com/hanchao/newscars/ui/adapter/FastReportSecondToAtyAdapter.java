@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/10/8.
+ * 快报详情适配器
  */
 public class FastReportSecondToAtyAdapter extends BaseAdapter {
     private int itemCount = 1;

@@ -18,8 +18,8 @@ import java.util.List;
 /**
  * Created by dllo on 16/9/29.
  */
-public class TalkAdapter extends BaseAdapter{
-    private List<TalkBean.ResultBean.ListBean>data;
+public class TalkAdapter extends BaseAdapter {
+    private List<TalkBean.ResultBean.ListBean> data;
     private Context context;
 
     public TalkAdapter(Context context) {
@@ -33,12 +33,12 @@ public class TalkAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return data!=null?data.size():0;
+        return data != null ? data.size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        return data!=null?data.get(position):null;
+        return data != null ? data.get(position) : null;
     }
 
     @Override
@@ -65,6 +65,7 @@ public class TalkAdapter extends BaseAdapter{
         }
         return convertView;
     }
+
     public class NewsViewHolder {
         ImageView showIv;
         TextView titleTv, timeTv, talkTv;

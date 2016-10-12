@@ -25,6 +25,7 @@ public class BrandFragmentAdapter extends BaseExpandableListAdapter {
     private Map<String, List<BrandListBean.ResultBean.BrandlistBean.ListBean>> childList;
     private Context context;
 
+
     public void setChildMaps(Map<String, List<BrandListBean.ResultBean.BrandlistBean.ListBean>> childMaps) {
         this.childList = childMaps;
         notifyDataSetChanged();

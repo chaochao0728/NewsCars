@@ -1,30 +1,32 @@
 package com.hanchao.newscars.ui.fragment.findcarsfragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.BrandListBean;
+import com.hanchao.newscars.mode.bean.BrandPopBean;
 import com.hanchao.newscars.mode.bean.BrandRecyclerBean;
 import com.hanchao.newscars.mode.net.VolleyInstance;
 import com.hanchao.newscars.mode.net.VolleyResult;
-import com.hanchao.newscars.ui.activity.BrandFragmentToAty;
-import com.hanchao.newscars.ui.activity.NewsFragmentToAty;
 import com.hanchao.newscars.ui.adapter.BrandFragmentAdapter;
+import com.hanchao.newscars.ui.adapter.BrandPopAdapter;
 import com.hanchao.newscars.ui.adapter.BrandRecyclerAdapter;
 import com.hanchao.newscars.ui.fragment.AbsBaseFragment;
+import com.hanchao.newscars.utils.OnRecycleItemClik;
 import com.hanchao.newscars.utils.ScreenSize;
 
 import java.util.ArrayList;
@@ -36,14 +38,22 @@ import java.util.Map;
  * Created by dllo on 16/9/10.
  * 品牌的fragment
  */
-public class BrandFragment extends AbsBaseFragment {
+public class BrandFragment extends AbsBaseFragment implements RadioGroup.OnCheckedChangeListener {
     private ExpandableListView listView;
     private BrandFragmentAdapter adapter;
     private List<String> groupList;
     private Map<String, List<BrandListBean.ResultBean.BrandlistBean.ListBean>> childs;
+    private List<String> popgroulists;
+    private Map<String, List<BrandPopBean.ResultBean.FctlistBean.SerieslistBean>> popchilds;
     private String Url = "http://223.99.255.20/cars.app.autohome.com.cn/dealer_v5.7.0/dealer/hotbrands-pm2.json";
     private List<BrandListBean.ResultBean.BrandlistBean> datas;
+    private List<BrandPopBean.ResultBean.FctlistBean> data;
     private LinearLayout rootLayout;
+    private RadioButton sellBtn, allBtn;
+    private RadioGroup radioGroup;
+    private String sellurl, allUrl;
+    private ExpandableListView poplistView;
+    private BrandPopAdapter brandPopAdapter;
 
     public static BrandFragment newInstance(String str) {
 
@@ -100,14 +110,7 @@ public class BrandFragment extends AbsBaseFragment {
 
             }
         });
-        listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                String Id = datas.get(groupPosition).getList().get(childPosition).getId() + "";
-                createWindow();
-                return false;
-            }
-        });
+
         addHeadView();
     }
 
@@ -115,8 +118,17 @@ public class BrandFragment extends AbsBaseFragment {
         PopupWindow pw = new PopupWindow(getContext());
         int height = ScreenSize.getHight(getContext());
         pw.setHeight(height);
-        pw.setWidth(400);
+        pw.setWidth(600);
         View v = LayoutInflater.from(context).inflate(R.layout.frament_brand_popwindow, null);
+        sellBtn = (RadioButton) v.findViewById(R.id.fragment_brand_popwindow_sellBtn);
+        allBtn = (RadioButton) v.findViewById(R.id.fragment_brand_popwindow_allBtn);
+        radioGroup = (RadioGroup) v.findViewById(R.id.fragment_brand_popwindow_radiogroup);
+        poplistView = (ExpandableListView) v.findViewById(R.id.fragment_brand_popwindow_recycler);
+        brandPopAdapter = new BrandPopAdapter(context);
+        poplistView.setGroupIndicator(null);
+        poplistView.setAdapter(brandPopAdapter);
+        radioGroup.check(R.id.fragment_brand_popwindow_sellBtn);
+        radioGroup.setOnCheckedChangeListener(this);
         pw.setContentView(v);
         pw.setFocusable(true);
         pw.setOutsideTouchable(true);
@@ -128,7 +140,7 @@ public class BrandFragment extends AbsBaseFragment {
      */
     private void addHeadView() {
         View headView = LayoutInflater.from(context).inflate(R.layout.item_brandfragment_head, null);
-        RecyclerView recycler = (RecyclerView) headView.findViewById(R.id.item_brand_head_recycler);
+        final RecyclerView recycler = (RecyclerView) headView.findViewById(R.id.item_brand_head_recycler);
         final BrandRecyclerAdapter adapters = new BrandRecyclerAdapter(context);
         StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(5, StaggeredGridLayoutManager.VERTICAL);
         recycler.setLayoutManager(manager);
@@ -147,7 +159,112 @@ public class BrandFragment extends AbsBaseFragment {
 
             }
         });
+        adapters.setOnRecycleItemClik(new OnRecycleItemClik() {
+            @Override
+            public void OnRvItemClicListener(int pos, String str) {
+                Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
+                allUrl = "http://app.api.autohome.com.cn/autov5.0.0/cars/seriesprice-pm2-b" + str + "-t2.json";
+                sellurl = "http://app.api.autohome.com.cn/autov5.0.0/cars/seriesprice-pm1-b" + str + "-t1.json";
+//                Log.d("22222", sellurl);
+                //进去的时候直接出数据
+                VolleyInstance.getInstance().startRequest(sellurl, new VolleyResult() {
+                    @Override
+                    public void success(String result) {
+                        Gson gson = new Gson();
+                        popgroulists = new ArrayList<>();
+                        popchilds = new HashMap<>();
+                        BrandPopBean bean = gson.fromJson(result, BrandPopBean.class);
+                        //父布局
+                        data = bean.getResult().getFctlist();
+                        for (int i = 0; i < data.size(); i++) {
+                            String name = data.get(i).getName();
+                            popgroulists.add(name);
+                            popchilds.put(name, data.get(i).getSerieslist());
+                        }
+                        brandPopAdapter.setGroupList(popgroulists);
+                        brandPopAdapter.setChildMaps(popchilds);
+                        for (int i = 0, count = data.size(); i < count; i++) {
+                            poplistView.expandGroup(i);
+                        }
+
+                    }
+
+                    @Override
+                    public void failure() {
+
+                    }
+                });
+
+                createWindow();
+            }
+        });
 
         listView.addHeaderView(headView);
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        FragmentManager manager = getChildFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        switch (checkedId) {
+            case R.id.fragment_brand_popwindow_sellBtn:
+                VolleyInstance.getInstance().startRequest(sellurl, new VolleyResult() {
+                    @Override
+                    public void success(String result) {
+                        Gson gson = new Gson();
+                        popgroulists = new ArrayList<>();
+                        popchilds = new HashMap<>();
+                        BrandPopBean bean = gson.fromJson(result, BrandPopBean.class);
+                        //父布局
+                        data = bean.getResult().getFctlist();
+                        for (int i = 0; i < data.size(); i++) {
+                            String name = data.get(i).getName();
+                            popgroulists.add(name);
+                            popchilds.put(name, data.get(i).getSerieslist());
+                        }
+                        brandPopAdapter.setGroupList(popgroulists);
+                        brandPopAdapter.setChildMaps(popchilds);
+                        for (int i = 0, count = data.size(); i < count; i++) {
+                            poplistView.expandGroup(i);
+                        }
+
+                    }
+
+                    @Override
+                    public void failure() {
+
+                    }
+                });
+                break;
+            case R.id.fragment_brand_popwindow_allBtn:
+                VolleyInstance.getInstance().startRequest(allUrl, new VolleyResult() {
+                    @Override
+                    public void success(String result) {
+                        Gson gson = new Gson();
+                        popgroulists = new ArrayList<>();
+                        popchilds = new HashMap<>();
+                        BrandPopBean bean = gson.fromJson(result, BrandPopBean.class);
+                        //父布局
+                        data = bean.getResult().getFctlist();
+                        for (int i = 0; i < data.size(); i++) {
+                            String name = data.get(i).getName();
+                            popgroulists.add(name);
+                            popchilds.put(name, data.get(i).getSerieslist());
+                        }
+                        brandPopAdapter.setGroupList(popgroulists);
+                        brandPopAdapter.setChildMaps(popchilds);
+                        for (int i = 0, count = data.size(); i < count; i++) {
+                            poplistView.expandGroup(i);
+                        }
+                    }
+
+                    @Override
+                    public void failure() {
+
+                    }
+                });
+                break;
+        }
+        transaction.commit();
     }
 }

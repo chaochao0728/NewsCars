@@ -25,7 +25,8 @@
                     android:layout_height="60dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
-                    android:src="@mipmap/ic_launcher" />
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/person" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -37,7 +38,7 @@
                         android:id="@+id/item_fast_report_to_aty_list_authorTv"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="5dp"
                         android:gravity="center_vertical"
                         android:text="作者"
                         android:textColor="#FF3E4DD9"
@@ -47,6 +48,7 @@
                         android:id="@+id/item_fast_report_to_aty_list_timeTv"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
                         android:text="时间" />
 
@@ -59,6 +61,7 @@
                 android:layout_height="60dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
+                android:maxLines="3"
                 android:paddingRight="5dp"
                 android:text="标题"
                 android:textSize="15sp" />
@@ -67,6 +70,7 @@
                 android:id="@+id/item_fast_report_to_aty_list_coundIv"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:padding="5dp"
                 android:scaleType="fitXY"
                 android:src="@mipmap/ic_launcher" />
 
@@ -133,7 +137,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="发表评论...." />
+                android:hint="发表评论...."
+                android:textSize="15sp" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

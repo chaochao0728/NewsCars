@@ -70,4 +70,12 @@ public class NetValues {
     public static final String BRAND_LISTVIEW = "http://223.99.255.20/cars.app.autohome.com.cn/cars_v5.7.0/cars/brands-pm2-ts635966571635589297.json";
     //--------------------------发现的listView的网址------------------------------------------------------
     public static final String FIND = "http://223.99.255.20/mobilenc.app.autohome.com.cn/discover_v5.8.0/mall/intelligentrecommend.ashx?a=2&pm=2&v=5.8.5&uid=0&deviceid=99000628573771&gps=38.889659,121.551063&cityid=210200&pid=210000&pageindex=1&pagesize=20&hid";
+    //---------------------------轮播图----------------------------------------------
+    public static final String FIND_ROTATE = "http://app.api.autohome.com.cn/autov5.0.0/mobile/appadvert-a2-pm1-v5.0.1-sid2-pid340000-cid0-lat0.000000-lng0.000000.json";
+    //------------------------------优创轮播图网址--------------------------------------------------
+    public static final String YOneroatUrl = "http://www3.autoimg.cn/newsdfs/g16/M09/4C/16/640x320_0_autohomecar__wKgH11ff_siAT39EAAb11cjL4MY067.jpg";
+    public static final String YTworoatUrl = "http://qn.www2.autoimg.cn/youchuang/g12/M04/5E/8C/autohomecar__wKgH4lfrOceAdYXIAARdHQORJHI322.jpg?imageView2/0/w/640/h/320";
+    public static final String YThreeroatUrl = "http://qn.www2.autoimg.cn/youchuang/g21/M07/37/E4/autohomecar__wKgFVVfqHeiAKxDGAAei-Q4G8cQ879.jpg?imageView2/0/w/640/h/320";
+    public static final String YForeroatUrl = "http://qn.www2.autoimg.cn/youchuang/g23/M0C/39/39/autohomecar__wKgFV1fqLx6AGyQyAAN0-n0loQE105.jpg?imageView2/0/w/640/h/320";
+    public static final String YFiveroatUrl = "http://qn.www2.autoimg.cn/youchuang/g12/M0C/55/DA/autohomecar__wKgH01fp2dmAN6FYAAM92zhCm7A512.jpg?imageView2/0/w/640/h/320";
 }

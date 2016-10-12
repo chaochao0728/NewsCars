@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.NewFragmentRoateBean;
 import com.hanchao.newscars.mode.bean.YouchuangBean;
+import com.hanchao.newscars.mode.net.NetValues;
 import com.hanchao.newscars.mode.net.VolleyInstance;
 import com.hanchao.newscars.mode.net.VolleyResult;
 import com.hanchao.newscars.ui.adapter.NewFragmentRotateAdapter;
@@ -101,7 +102,7 @@ public class YouchuangFragment extends AbsBaseFragment {
     }
 
     /**
-     * 改变笑点的自定义方法
+     * 改变小点的自定义方法
      */
     private void changePoints() {
         newFragmentvp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -190,10 +191,10 @@ public class YouchuangFragment extends AbsBaseFragment {
      */
     private void builDatas() {
         data = new ArrayList<>();
-        data.add(new NewFragmentRoateBean("http://www3.autoimg.cn/newsdfs/g16/M09/4C/16/640x320_0_autohomecar__wKgH11ff_siAT39EAAb11cjL4MY067.jpg"));
-        data.add(new NewFragmentRoateBean("http://qn.www2.autoimg.cn/youchuang/g12/M04/5E/8C/autohomecar__wKgH4lfrOceAdYXIAARdHQORJHI322.jpg?imageView2/0/w/640/h/320"));
-        data.add(new NewFragmentRoateBean("http://qn.www2.autoimg.cn/youchuang/g21/M07/37/E4/autohomecar__wKgFVVfqHeiAKxDGAAei-Q4G8cQ879.jpg?imageView2/0/w/640/h/320"));
-        data.add(new NewFragmentRoateBean("http://qn.www2.autoimg.cn/youchuang/g23/M0C/39/39/autohomecar__wKgFV1fqLx6AGyQyAAN0-n0loQE105.jpg?imageView2/0/w/640/h/320"));
-        data.add(new NewFragmentRoateBean("http://qn.www2.autoimg.cn/youchuang/g12/M0C/55/DA/autohomecar__wKgH01fp2dmAN6FYAAM92zhCm7A512.jpg?imageView2/0/w/640/h/320"));
+        data.add(new NewFragmentRoateBean(NetValues.YOneroatUrl));
+        data.add(new NewFragmentRoateBean(NetValues.YTworoatUrl));
+        data.add(new NewFragmentRoateBean(NetValues.YThreeroatUrl));
+        data.add(new NewFragmentRoateBean(NetValues.YForeroatUrl));
+        data.add(new NewFragmentRoateBean(NetValues.YFiveroatUrl));
     }
 }

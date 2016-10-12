@@ -3,11 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.hanchao.newscars.ui.activity.NewsFragmentToAty">
+
+    <ImageView
+        android:id="@+id/activity_news_fragment_to_aty_iv"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="5dp"
+        android:src="@mipmap/sanjiao" />
+
+    <TextView
+        android:id="@+id/activity_new_fragment_to_aty_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/activity_news_fragment_to_aty_iv"
+        android:text="返回"
+        android:textColor="#3191ea" />
+
+    <ImageView
+        android:id="@+id/collect_radioBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/zan" />
 
     <WebView
         android:id="@+id/activity_news_fragment_to_aty_vew_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/collect_radioBtn"
+        android:layout_marginTop="5dp" />
 
 </RelativeLayout>

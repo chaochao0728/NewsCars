@@ -10,6 +10,9 @@ import android.webkit.WebViewClient;
 
 import com.hanchao.newscars.R;
 
+/**
+ * 品牌跳转页
+ */
 public class BrandFragmentToAty extends AbsBaseActivity {
 
     private WebView webView;

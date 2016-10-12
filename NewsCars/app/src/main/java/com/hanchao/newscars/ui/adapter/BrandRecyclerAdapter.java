@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.hanchao.newscars.R;
 import com.hanchao.newscars.mode.bean.BrandRecyclerBean;
+import com.hanchao.newscars.utils.OnRecycleItemClik;
 import com.hanchao.newscars.utils.ScreenSize;
 
 import java.util.List;
@@ -22,6 +23,12 @@ import java.util.List;
 public class BrandRecyclerAdapter extends RecyclerView.Adapter<BrandRecyclerAdapter.brandViewHolder> {
     private List<BrandRecyclerBean.ResultBean.ListBean> datas;
     private Context context;
+    private int p;
+    private OnRecycleItemClik onRecycleItemClik;
+
+    public void setOnRecycleItemClik(OnRecycleItemClik onRecycleItemClik) {
+        this.onRecycleItemClik = onRecycleItemClik;
+    }
 
     public BrandRecyclerAdapter(Context context) {
         this.context = context;
@@ -42,10 +49,19 @@ public class BrandRecyclerAdapter extends RecyclerView.Adapter<BrandRecyclerAdap
     }
 
     @Override
-    public void onBindViewHolder(brandViewHolder holder, int position) {
+    public void onBindViewHolder(final brandViewHolder holder, final int position) {
         BrandRecyclerBean.ResultBean.ListBean bean = datas.get(position);
         holder.textView.setText(bean.getName());
         Glide.with(context).load(bean.getImg()).into(holder.imageView);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                p = holder.getLayoutPosition();
+                notifyDataSetChanged();
+                int id = datas.get(position).getId();
+                onRecycleItemClik.OnRvItemClicListener(p, id + "");
+            }
+        });
     }
 
     @Override

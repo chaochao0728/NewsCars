@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/18.
+ * 视频的实体类
  */
 public class VideoBean {
 

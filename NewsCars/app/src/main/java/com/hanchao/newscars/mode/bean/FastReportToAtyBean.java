@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/10/7.
+ * 快报详情实体类
  */
 public class FastReportToAtyBean {
 

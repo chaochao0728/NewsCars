@@ -19,6 +19,9 @@ import com.hanchao.newscars.ui.adapter.FastReportToAtyAdapter;
 
 import java.util.List;
 
+/**
+ * 快报的跳转详情页
+ */
 public class FastReportFragmentToAty extends AbsBaseActivity {
     //    private WebView webView;
     //第二界面的listView

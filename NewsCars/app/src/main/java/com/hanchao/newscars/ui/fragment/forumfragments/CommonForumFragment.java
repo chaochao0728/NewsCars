@@ -54,6 +54,7 @@ public class CommonForumFragment extends AbsBaseFragment implements View.OnClick
                 break;
         }
     }
+
     //自定义的方法创建popupwindow
     private void createWindow() {
         PopupWindow pw = new PopupWindow(getContext());

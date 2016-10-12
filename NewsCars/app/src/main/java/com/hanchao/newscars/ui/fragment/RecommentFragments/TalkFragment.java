@@ -20,19 +20,22 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/9/29.
+ * 说课的fragment
  */
-public class TalkFragment extends AbsBaseFragment{
+public class TalkFragment extends AbsBaseFragment {
     private ListView listview;
     private List<TalkBean.ResultBean.ListBean> datas;
     private TalkAdapter adapter;
+
     public static TalkFragment newInstance(String string) {
 
         Bundle args = new Bundle();
-        args.putString("URL",string);
+        args.putString("URL", string);
         TalkFragment fragment = new TalkFragment();
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     protected int setLayout() {
         return R.layout.fragment_news;
@@ -45,7 +48,7 @@ public class TalkFragment extends AbsBaseFragment{
 
     @Override
     protected void initDatas() {
-        adapter=new TalkAdapter(context);
+        adapter = new TalkAdapter(context);
         listview.setAdapter(adapter);
         Bundle bundle = getArguments();
         String TheUrl = bundle.getString("URL");

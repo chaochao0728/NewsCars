@@ -10,6 +10,10 @@ import android.webkit.WebViewClient;
 
 import com.hanchao.newscars.R;
 
+/**
+ * 热帖跳转详情页
+ */
+
 public class HotTopicFragmentToAty extends AbsBaseActivity {
     private WebView webView;
 

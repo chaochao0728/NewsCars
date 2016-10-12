@@ -19,6 +19,7 @@ import java.util.List;
 
 /**
  * Created by dllo on 16/10/7.
+ * 快报详情适配器
  */
 public class FastReportToAtyAdapter extends BaseAdapter {
     private List<FastReportToAtyBean.ResultBean.MessagelistBean> data;
@@ -64,11 +65,8 @@ public class FastReportToAtyAdapter extends BaseAdapter {
         holder.timeTv.setText(bean.getPublishtime());
         holder.authorTv.setText(bean.getAuthorname());
         holder.titleTv.setText(bean.getContent());
-        if (bean.getAttachments() == null) {
-            holder.coundIv.setImageBitmap(BitmapFactory.decodeFile(null));
-        } else {
-            Glide.with(context).load(bean.getAttachments().get(0).getPicurl()).into(holder.coundIv);
-        }
+        Glide.with(context).load(bean.getAttachments().get(0).getPicurl()).into(holder.coundIv);
+        Glide.with(context).load(bean.getHeadimg()).into(holder.authoeIv);
         //每一条的listView
         FastReportSecondToAtyAdapter adapter = new FastReportSecondToAtyAdapter(context);
         adapter.setDatas(bean.getCommentlist());

@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ui.activity.MainActivity">
+        <activity android:name=".ui.activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,10 @@
         <activity android:name=".ui.activity.NewsFragmentToAty" />
         <activity android:name=".ui.activity.HotTopicFragmentToAty" />
         <activity android:name=".ui.activity.BrandFragmentToAty" />
-        <activity android:name=".ui.activity.VidaoFragmentToAty"></activity>
+        <activity android:name=".ui.activity.VidaoFragmentToAty" />
+        <activity android:name=".ui.activity.CollectActivity" />
+        <activity android:name=".ui.activity.RoateActivity" />
+        <activity android:name=".ui.activity.MainActivity" />
     </application>
 
 </manifest>

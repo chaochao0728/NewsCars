@@ -82,7 +82,7 @@ public class NewFragment extends AbsBaseFragment {
                 //轮播图网址
                 List<NewBean.ResultBean.FocusimgBean> dates = bean.getResult().getFocusimg();
                 oneTurnViewUrl = dates.get(0).getImgurl();
-                Log.d("1111", oneTurnViewUrl);
+//                Log.d("1111", oneTurnViewUrl);
                 twoTurnViewUrl = dates.get(1).getImgurl();
                 threeTurnViewUrl = dates.get(2).getImgurl();
                 fourTurnViewUrl = dates.get(3).getImgurl();
@@ -120,16 +120,16 @@ public class NewFragment extends AbsBaseFragment {
                         VolleyInstance.getInstance().startRequest(Url, new VolleyResult() {
                             @Override
                             public void success(String result) {
-                                try {
-                                    Thread.sleep(2000);
-                                    Gson gson = new Gson();
-                                    bean = gson.fromJson(result, NewBean.class);
-                                    List<NewBean.ResultBean.NewslistBean> datas = bean.getResult().getNewslist();
-                                    adapter.setData(datas);
-                                    reFlashListView.hideHeaderView();
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
+                                Gson gson = new Gson();
+                                bean = gson.fromJson(result, NewBean.class);
+                                List<NewBean.ResultBean.NewslistBean> datas = bean.getResult().getNewslist();
+                                adapter.setData(datas);
+//                                try {
+//                                    Thread.sleep(2000);
+                                reFlashListView.hideHeaderView();
+//                                } catch (InterruptedException e) {
+//                                    e.printStackTrace();
+//                                }
                             }
 
                             @Override

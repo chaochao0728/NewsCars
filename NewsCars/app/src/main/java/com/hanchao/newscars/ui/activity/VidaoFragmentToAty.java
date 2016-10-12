@@ -9,6 +9,10 @@ import android.webkit.WebViewClient;
 
 import com.hanchao.newscars.R;
 
+/**
+ * 视频详情
+ */
+
 public class VidaoFragmentToAty extends AbsBaseActivity {
     private WebView webView;
 

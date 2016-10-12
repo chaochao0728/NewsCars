@@ -8,18 +8,18 @@
         android:id="@+id/item_fragment_brand_child_iv"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_marginLeft="5dp"/>
+        android:layout_marginLeft="5dp"
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/item_fragment_brand_child_tv"
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
         android:layout_weight="1"
         android:gravity="center_vertical"
         android:text="车名"
-        android:textSize="15sp"
-        android:layout_marginLeft="5dp"/>
+        android:textSize="15sp" />
 
 
 </LinearLayout>
