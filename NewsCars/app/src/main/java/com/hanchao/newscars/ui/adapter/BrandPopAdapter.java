@@ -34,6 +34,7 @@ public class BrandPopAdapter extends BaseExpandableListAdapter {
         notifyDataSetChanged();
     }
 
+
     public void setGroupList(List<String> groupList) {
         this.groupList = groupList;
         notifyDataSetChanged();

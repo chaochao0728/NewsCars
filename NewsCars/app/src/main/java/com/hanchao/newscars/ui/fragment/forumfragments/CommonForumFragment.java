@@ -1,5 +1,6 @@
 package com.hanchao.newscars.ui.fragment.forumfragments;
 
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,11 @@ import com.hanchao.newscars.utils.ScreenSize;
  * 常用论坛的fragment
  */
 public class CommonForumFragment extends AbsBaseFragment implements View.OnClickListener {
+    public static CommonForumFragment newInstance() {
+        CommonForumFragment fragment = new CommonForumFragment();
+        return fragment;
+    }
+
     private LinearLayout carforumTv, areaforumTv, topicforumTv;
     private LinearLayout rootView;
 

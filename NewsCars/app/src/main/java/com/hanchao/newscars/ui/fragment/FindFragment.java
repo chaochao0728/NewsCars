@@ -46,10 +46,8 @@ public class FindFragment extends AbsBaseFragment {
     private List<NewFragmentRoateBean> data;
     private NewFragmentRotateAdapter vpadapter;
     private static final int TIME = 3000;
-    private String oneTurnViewUrl, twoTurnViewUrl, threeTurnViewUrl, fourTurnViewUrl,
-            fiveTurnViewUrl;
+    private String oneTurnViewUrl, twoTurnViewUrl, threeTurnViewUrl, fourTurnViewUrl;
     private String rotateUrl = NetValues.FIND_ROTATE;
-
     public static FindFragment newInstance() {
         FindFragment fragment = new FindFragment();
         return fragment;

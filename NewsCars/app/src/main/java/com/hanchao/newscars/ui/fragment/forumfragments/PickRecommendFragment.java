@@ -1,5 +1,6 @@
 package com.hanchao.newscars.ui.fragment.forumfragments;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -26,6 +27,11 @@ import java.util.List;
  * 精品推荐的fragment
  */
 public class PickRecommendFragment extends AbsBaseFragment implements View.OnClickListener {
+    public static PickRecommendFragment newInstance() {
+        PickRecommendFragment fragment = new PickRecommendFragment();
+        return fragment;
+    }
+
     private RecyclerView rv;
     private int rvpos;
     private PickRecommendRecyclerAdapter adapter;

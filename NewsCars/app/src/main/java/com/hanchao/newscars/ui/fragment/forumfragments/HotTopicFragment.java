@@ -30,6 +30,11 @@ import java.util.List;
  * 热帖的fragment
  */
 public class HotTopicFragment extends AbsBaseFragment {
+    public static HotTopicFragment newInstance() {
+        HotTopicFragment fragment = new HotTopicFragment();
+        return fragment;
+    }
+
     private ListView listView;
     private HotTopicAdapter adapter;
     private List<HotTopickBean.ResultBean.ListBean> data;

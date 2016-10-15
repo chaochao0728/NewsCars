@@ -162,10 +162,8 @@ public class BrandFragment extends AbsBaseFragment implements RadioGroup.OnCheck
         adapters.setOnRecycleItemClik(new OnRecycleItemClik() {
             @Override
             public void OnRvItemClicListener(int pos, String str) {
-                Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
                 allUrl = "http://app.api.autohome.com.cn/autov5.0.0/cars/seriesprice-pm2-b" + str + "-t2.json";
                 sellurl = "http://app.api.autohome.com.cn/autov5.0.0/cars/seriesprice-pm1-b" + str + "-t1.json";
-//                Log.d("22222", sellurl);
                 //进去的时候直接出数据
                 VolleyInstance.getInstance().startRequest(sellurl, new VolleyResult() {
                     @Override

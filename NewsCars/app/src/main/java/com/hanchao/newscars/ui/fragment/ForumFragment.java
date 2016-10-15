@@ -44,9 +44,9 @@ public class ForumFragment extends AbsBaseFragment {
     @Override
     protected void initDatas() {
         data = new ArrayList<>();
-        data.add(new PickRecommendFragment());
-        data.add(new HotTopicFragment());
-        data.add(new CommonForumFragment());
+        data.add(PickRecommendFragment.newInstance());
+        data.add(HotTopicFragment.newInstance());
+        data.add(CommonForumFragment.newInstance());
         adapter = new ForumAdapter(getChildFragmentManager(), data);
         viewPager.setAdapter(adapter);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
